@@ -1,0 +1,3098 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.14" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>BMS-FW-ASG-01_Submission</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+em, em em em, em em em em em {
+font-style: italic;
+}
+em em, em em em em {
+font-style: normal;
+}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+@media print {
+html {
+color-scheme: light only;
+}
+html, body, pre, code {
+background-color: transparent;
+}
+body, a, a:visited, blockquote {
+color: black;
+}
+pre, code {
+padding: 0;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+} </style>
+  <style type="text/css">
+@page {
+size: A4;
+margin: 18mm 16mm 20mm 16mm;
+}
+html {
+font-size: 10.5pt;
+}
+body {
+font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+color: #1b1f24;
+line-height: 1.5;
+max-width: 190mm;
+margin: 0 auto;
+padding: 0;
+background: #ffffff;
+}
+h1, h2, h3, h4 {
+font-family: "Segoe UI Semibold", "Segoe UI", Arial, sans-serif;
+color: #0b3d62;
+line-height: 1.25;
+margin-top: 1.4em;
+margin-bottom: 0.45em;
+page-break-after: avoid;
+}
+h1 {
+font-size: 2.0em;
+border-bottom: 3px solid #0b3d62;
+padding-bottom: 0.25em;
+margin-top: 0;
+}
+h2 {
+font-size: 1.45em;
+border-bottom: 1px solid #c9d6e2;
+padding-bottom: 0.18em;
+margin-top: 1.6em;
+}
+h3 { font-size: 1.18em; }
+h4 { font-size: 1.02em; }
+p, li {
+orphans: 3;
+widows: 3;
+}
+a {
+color: #0b5cad;
+text-decoration: none;
+}
+code {
+font-family: "Cascadia Mono", Consolas, "Courier New", monospace;
+font-size: 0.88em;
+background: #f2f5f8;
+border: 1px solid #e1e8ef;
+border-radius: 3px;
+padding: 0.05em 0.28em;
+}
+pre {
+background: #f6f8fa;
+border: 1px solid #d7e0e8;
+border-left: 4px solid #0b5cad;
+border-radius: 4px;
+padding: 0.7em 0.9em;
+overflow-x: auto;
+line-height: 1.38;
+page-break-inside: avoid;
+}
+pre code {
+background: none;
+border: none;
+padding: 0;
+font-size: 0.82em;
+}
+blockquote {
+margin: 1em 0;
+padding: 0.55em 1em;
+background: #eef5fb;
+border-left: 4px solid #0b5cad;
+color: #24313d;
+}
+blockquote p { margin: 0.2em 0; }
+table {
+border-collapse: collapse;
+width: 100%;
+margin: 0.9em 0 1.15em 0;
+font-size: 0.88em;
+page-break-inside: auto;
+}
+thead {
+display: table-header-group;
+}
+tr {
+page-break-inside: avoid;
+page-break-after: auto;
+}
+th, td {
+border: 1px solid #c9d6e2;
+padding: 0.32em 0.45em;
+text-align: left;
+vertical-align: top;
+}
+th {
+background: #e4eef7;
+color: #0b3d62;
+font-weight: 600;
+}
+tbody tr:nth-child(even) {
+background: #f8fafc;
+}
+ul, ol {
+margin-top: 0.4em;
+margin-bottom: 0.8em;
+padding-left: 1.6em;
+}
+li { margin: 0.18em 0; }
+hr {
+border: none;
+border-top: 1px solid #c9d6e2;
+margin: 1.6em 0;
+}
+#TOC {
+background: #f6f8fa;
+border: 1px solid #d7e0e8;
+border-radius: 4px;
+padding: 0.7em 1.1em;
+margin: 1.2em 0 1.8em 0;
+font-size: 0.92em;
+page-break-after: always;
+}
+#TOC ul {
+list-style: none;
+padding-left: 1.1em;
+margin: 0.15em 0;
+}
+#TOC > ul { padding-left: 0; }
+#TOC a { color: #1b1f24; }
+.title {
+font-size: 1.05em;
+color: #5a6b7b;
+margin-bottom: 0.4em;
+}
+.date, .author { color: #5a6b7b; }
+
+h2 + table, h3 + table { page-break-before: avoid; }
+
+#contents { page-break-before: always; page-break-after: always; }
+</style>
+</head>
+<body>
+<h1 id="bms-fw-asg-01--submission">BMS-FW-ASG-01 — Submission</h1>
+<p><strong>16S1P LFP battery management system — firmware design,
+implementation, verification and code review</strong></p>
+<table>
+<tbody>
+<tr>
+<td><strong>Candidate</strong></td>
+<td>______________________________</td>
+</tr>
+<tr>
+<td><strong>Date</strong></td>
+<td>16 November 2026</td>
+</tr>
+<tr>
+<td><strong>Deliverable</strong></td>
+<td><code>bms-fw/</code> — source, tests, simulation, DBC and
+documentation</td>
+</tr>
+<tr>
+<td><strong>Companion documents</strong></td>
+<td><code>README.md</code>, <code>ASSUMPTIONS.md</code>,
+<code>CODE_REVIEW.md</code>, <code>docs/DESIGN.md</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Summary.</strong> This is the complete answer to the
+assignment: all eight mandatory tasks and both bonuses. It covers the
+architecture and timing argument, the AFE driver, balancing, protection
+and DTCs, CAN/DBC/UDS diagnostics, the test and simulation evidence, the
+code review, and the parameter-storage and firmware-update design.
+Section 14 records every alternative that was considered and why it was
+rejected; section 15 maps every requirement to a file, test or
+trace.</p>
+</blockquote>
+<h3 id="assignment-parameters-used">Assignment parameters used</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pack</td>
+<td>16S1P LFP, 100 Ah, nominal 51.2 V</td>
+</tr>
+<tr>
+<td>Cell voltage range</td>
+<td>2.50 V – 3.65 V</td>
+</tr>
+<tr>
+<td>Pack voltage range</td>
+<td>40.0 V – 58.4 V</td>
+</tr>
+<tr>
+<td>Temperature sensors</td>
+<td>4 × NTC 10 kΩ (B25/85 = 3435) on cells, 1 × NTC on the BMS
+board</td>
+</tr>
+<tr>
+<td>Current sensor</td>
+<td>±300 A, already scaled to mA by the HAL; positive = charge</td>
+</tr>
+<tr>
+<td>Balancing</td>
+<td>passive, 39 Ω bleed per cell (≈ 85 mA at 3.3 V)</td>
+</tr>
+<tr>
+<td>Main control cycle</td>
+<td>100 ms — measurement, balancing, protection, CAN Tx</td>
+</tr>
+<tr>
+<td>Fast cycle</td>
+<td>10 ms — current measurement, over-current protection</td>
+</tr>
+<tr>
+<td>CAN</td>
+<td>500 kbit/s, 11-bit identifiers, Intel (little-endian) byte
+order</td>
+</tr>
+<tr>
+<td>States</td>
+<td>INIT → STANDBY → PRECHARGE → DRIVE / CHARGE → STANDBY → SLEEP; FAULT
+from any state</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to read this document.</strong> Sections 1–3 are the
+summary; sections 4–11 are the eight tasks in order; sections 12–13 are
+the bonuses; sections 14–20 are the alternatives, traceability, speaking
+notes, likely questions, the three-day plan, limitations and appendix.
+The code is the authority: if a detail here disagrees with
+<code>src/</code>, the code and its tests win.</p>
+<hr />
+<h2 id="contents">Contents</h2>
+<ol type="1">
+<li><a href="#1-the-one-page-answer">The one-page answer</a></li>
+<li><a href="#2-the-problem-decoded">The problem, decoded</a></li>
+<li><a href="#3-solution-at-a-glance">Solution at a glance</a></li>
+<li><a href="#4-task-1--architecture-scheduling-state-machine-safety">Task 1 —
+architecture, scheduling, state machine, safety</a></li>
+<li><a href="#5-task-2--afe-driver">Task 2 — AFE driver</a></li>
+<li><a href="#6-task-3--passive-balancing">Task 3 — passive
+balancing</a></li>
+<li><a href="#7-task-4--protection-and-dtcs">Task 4 — protection and
+DTCs</a></li>
+<li><a href="#8-task-5--can-dbc-and-uds">Task 5 — CAN, DBC and
+UDS</a></li>
+<li><a href="#9-task-6--tests-simulation-static-analysis-coverage">Task
+6 — tests, simulation, static analysis, coverage</a></li>
+<li><a href="#10-task-7--code-review">Task 7 — code review</a></li>
+<li><a href="#11-task-8--documentation-and-code-quality">Task 8 —
+documentation and code quality</a></li>
+<li><a href="#12-bonus-b1--soc-estimation">Bonus B1 — SOC
+estimation</a></li>
+<li><a href="#13-bonus-b2--parameter-storage-and-firmware-update">Bonus
+B2 — parameter storage and firmware update</a></li>
+<li><a href="#14-every-alternative-and-why-it-was-not-chosen">Every
+alternative, and why it was not chosen</a></li>
+<li><a href="#15-requirement-traceability">Requirement
+traceability</a></li>
+<li><a href="#16-review-session-speaking-notes">Review-session speaking
+notes</a></li>
+<li><a href="#17-likely-questions-and-model-answers">Likely questions
+and model answers</a></li>
+<li><a href="#18-the-three-day-plan">The three-day plan</a></li>
+<li><a href="#19-limitations-and-production-roadmap">Limitations and
+production roadmap</a></li>
+<li><a href="#20-appendix">Appendix — file index, DTC map, CAN map,
+glossary</a></li>
+</ol>
+<hr />
+<h2 id="1-the-one-page-answer">1. The one-page answer</h2>
+<blockquote>
+<p>I built a complete, host-runnable BMS firmware in C11: a 1 ms tick
+with a 10 ms fast control cycle and a 100 ms main control cycle, a
+non-blocking AFE acquisition state machine with CRC and retries,
+table-driven passive balancing with hysteresis, adjacency and starvation
+control, a table-driven protection layer with 11 DTCs and derating, a
+table-driven CAN signal layer with CRC and alive counters, a UDS/ISO-TP
+diagnostic server, SOC estimation with OCV correction, and A/B NVM
+parameter storage. It has 88 unit tests, 100 % line coverage on
+balancing and 96 % branch coverage, 97 % line/91 % branch on protection,
+zero cppcheck findings, and two simulation scenarios with committed
+plots. The architecture is layered so that every safety-relevant
+decision is a pure function tested on the PC, and every hardware access
+is behind a HAL.</p>
+</blockquote>
+<p>The four decisions that carry the design:</p>
+<ol type="1">
+<li><strong>Fixed cyclic executive, not an RTOS.</strong> Five periodic
+entries with hard, known periods. The scheduler gives deterministic
+order, bounded work per tick, an overrun counter, and a host build that
+behaves like the target. An RTOS would add footprint, priority-inversion
+analysis and non-reproducible timing for no functional gain.</li>
+<li><strong>Every periodic activity is non-blocking and
+bounded.</strong> The AFE does one SPI transaction per 1 ms tick; CAN
+drains at most four frames per tick; NVM is the only potentially slow
+call and is isolated behind the HAL and documented.</li>
+<li><strong>One source of truth per contract.</strong>
+<code>FaultDef_t</code> defines every protection behaviour;
+<code>CanSignalDef_t</code> defines every signal&#39;s bit position and
+scale; <code>bms.dbc</code> is the external contract;
+<code>BalConfig_t</code> defines every balancing threshold. Adding a
+fault, a signal or a threshold is a table edit, not a new branch.</li>
+<li><strong>Safety is structural, not a claim.</strong> Safe state is
+the default, hard OV/UV/OC bypass the debounce, contactors are held for
+1 s when opening is not urgent, all shared multi-field data is
+double-buffered, and every loop has a static bound. No
+<code>malloc</code>, no recursion, no variable-length arrays.</li>
+</ol>
+<p>The honest limitations: no target hardware, so the timing numbers are
+conservative estimates; no MISRA add-on or clang-tidy in the
+environment; the bootloader half of B2 is design-only; NVM wear
+levelling would be log-structured in production.</p>
+<hr />
+<h2 id="2-the-problem-decoded">2. The problem, decoded</h2>
+<h3 id="21-what-the-assignment-asks-for">2.1 What the assignment asks
+for</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Task</th>
+<th>What a strong answer must show</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Architecture, scheduling, state machine, data sharing, functional
+safety</td>
+<td>A defensible decomposition, a timing argument, a transition table, a
+concurrency argument, a hazard mindset</td>
+</tr>
+<tr>
+<td>2</td>
+<td>AFE driver: CRC, retries, plausibility, snapshot</td>
+<td>Non-blocking acquisition, real error handling, a coherent data
+hand-off, testability</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Balancing: S1–S10, fairness, inhibits, timeout</td>
+<td>Correct hysteresis, adjacency, max-cell and starvation logic, every
+inhibit, a bounded algorithm</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Protection: table, debounce, DTCs, derating</td>
+<td>Data-driven faults, correct latch/clear, hard thresholds, documented
+CCL/DCL</td>
+</tr>
+<tr>
+<td>5</td>
+<td>CAN matrix, signal layer, DBC, UDS/ISO-TP</td>
+<td>Correct scaling/endianness/CRC, a complete DBC, a diagnostic subset
+with real NRCs</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Tests, simulation, static analysis, ≥85 % branch coverage</td>
+<td>Evidence, not claims: a runnable test suite, scenarios, coverage,
+cppcheck</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Code review of three listings</td>
+<td>Find the unsafe and undefined-behaviour defects, explain why, give
+corrected code</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Documentation and code quality</td>
+<td>A README that builds in one command, assumptions, clean headers, no
+warnings</td>
+</tr>
+<tr>
+<td>B1</td>
+<td>SOC estimation, flat OCV region</td>
+<td>Coulomb counting + a principled correction that does not jump in the
+flat region</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>Firmware update + parameter storage (design-only)</td>
+<td>A/B, CRC, versioning, power-loss cases, signature, rollback</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-constraints-that-shape-the-solution">2.2 Constraints that
+shape the solution</h3>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Consequence in the code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C11, fixed-width types</td>
+<td><code>stdint.h</code> everywhere; <code>bool</code> from
+<code>stdbool.h</code>; no compiler extensions</td>
+</tr>
+<tr>
+<td>No <code>malloc</code>/<code>free</code> in application code</td>
+<td>All buffers are static or caller-provided; fixed capacities
+(<code>CANDRV_QUEUE_LEN</code>, <code>ISOTP_MAX_PAYLOAD</code>,
+<code>NVM_PAYLOAD_MAX</code>)</td>
+</tr>
+<tr>
+<td>Bounded execution</td>
+<td>Every loop has a compile-time or input-bounded limit; one SPI
+transaction per tick; ≤4 CAN frames per poll; no
+<code>while (!flag)</code></td>
+</tr>
+<tr>
+<td>PC-host build with simulated HAL</td>
+<td><code>hal_sim.c</code> implements time, SPI, contactors, voltages,
+current, temperatures, CAN, NVM; <code>afe_sim.c</code> models the
+register map</td>
+</tr>
+<tr>
+<td><code>-Wall -Wextra -Werror</code></td>
+<td>Plus
+<code>-Wpedantic -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wdouble-promotion -Wformat=2 -Wundef -Wcast-qual -Wpointer-arith</code></td>
+</tr>
+<tr>
+<td>3 calendar days</td>
+<td>Scope chosen so every mandatory item is complete; bonuses are real
+but bounded</td>
+</tr>
+<tr>
+<td>AI allowed but disclosed</td>
+<td>README §7 lists where AI helped and how every line was verified</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-what-complete-means-here">2.3 What &quot;complete&quot; means here</h3>
+<p>The repository does not stop at code. For each requirement there is a
+runnable artefact:</p>
+<ul>
+<li>a unit test that fails if the behaviour regresses;</li>
+<li>a simulation trace that shows the behaviour over time;</li>
+<li>a coverage or static-analysis report;</li>
+<li>a paragraph in the design document explaining the trade-off.</li>
+</ul>
+<p>That is the difference between &quot;I wrote a BMS&quot; and &quot;I can defend a
+BMS in a review&quot;.</p>
+<hr />
+<h2 id="3-solution-at-a-glance">3. Solution at a glance</h2>
+<h3 id="31-repository-map">3.1 Repository map</h3>
+<pre class="text"><code>bms-fw/
+├── README.md                     build, design summary, AI disclosure, traceability
+├── ASSUMPTIONS.md                A1–J4, each with why and impact
+├── CODE_REVIEW.md                Task 7: 47 findings + corrected code
+├── CMakeLists.txt                build, tests, simulate, check, coverage
+├── dbc/bms.dbc                   complete CAN database
+├── docs/
+│   ├── DESIGN.md                 Task 1 + alternatives log
+│   ├── BMS-FW-ASG-01_Submission.md    this document
+│   ├── BMS-FW-ASG-01_Submission.pdf   print-ready A4
+│   ├── BMS-FW-ASG-01_Submission.docx  editable Word version
+│   ├── COMPLETE_SOLUTION.md      the same master answer (internal copy)
+│   ├── COMPLETE_SOLUTION.html    self-contained HTML
+│   ├── COMPLETE_SOLUTION.pdf     print-ready A4
+│   ├── style.css                 print style for the HTML/PDF
+│   ├── coverage.txt              gcov evidence
+│   ├── static_analysis.txt       cppcheck evidence
+│   └── plots/                    checked-in SVG plots
+├── src/
+│   ├── common/                   CRC-8/16, saturation
+│   ├── hal/                      HAL interface, PC HAL, AFE register model
+│   ├── drivers/                  AFE state machine, CAN queue, NTC table
+│   ├── services/                 balancing, protection, SOC, CAN signal/matrix,
+│   │                             ISO-TP, UDS, NVM
+│   └── app/                      scheduler, state machine, application
+├── test/                         88 Unity tests
+├── sim/                          CSV scenario runner, scenarios, traces, plots
+├── tools/plot_svg.c              dependency-free CSV → SVG
+└── third_party/unity/            vendored MIT test framework</code></pre>
+<h3 id="32-numbers">3.2 Numbers</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Result</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unit tests</td>
+<td>88, 0 failures</td>
+<td><code>test/</code>, <code>ctest</code></td>
+</tr>
+<tr>
+<td>Balancing coverage</td>
+<td>100.00 % lines, 96.08 % branches taken</td>
+<td><code>docs/coverage.txt</code></td>
+</tr>
+<tr>
+<td>Protection coverage</td>
+<td>97.30 % lines, 91.38 % branches taken</td>
+<td><code>docs/coverage.txt</code></td>
+</tr>
+<tr>
+<td>Static analysis</td>
+<td>cppcheck 2.22.0, no findings, 18 files</td>
+<td><code>docs/static_analysis.txt</code></td>
+</tr>
+<tr>
+<td>Max stack frame</td>
+<td>400 B (<code>Task_Fast</code>), 112 B (<code>Bal_Run</code>)</td>
+<td><code>-fstack-usage</code></td>
+</tr>
+<tr>
+<td>Estimated CPU load</td>
+<td>≈ 8.5 % upper bound (1 ms tick charged at 80 µs); ≈ 1–2 %
+average</td>
+<td><code>docs/DESIGN.md</code> §3.3</td>
+</tr>
+<tr>
+<td>CAN messages</td>
+<td>6 (5 Tx, 1 Rx)</td>
+<td><code>dbc/bms.dbc</code></td>
+</tr>
+<tr>
+<td>DTCs</td>
+<td>11</td>
+<td><code>protection.c</code></td>
+</tr>
+<tr>
+<td>Simulation</td>
+<td>2 scenarios, 5 SVG plots</td>
+<td><code>sim/out/</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-build-and-evidence-in-four-commands">3.3 Build and evidence
+in four commands</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">-S</span> . <span class="at">-B</span> build <span class="at">-G</span> Ninja <span class="at">-DCMAKE_C_COMPILER</span><span class="op">=</span>gcc</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--build</span> build</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ctest</span> <span class="at">--test-dir</span> build <span class="at">--output-on-failure</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cmake</span> <span class="at">--build</span> build <span class="at">--target</span> simulate</span></code></pre></div>
+<p>Expected:</p>
+<pre class="text"><code>88 Tests 0 Failures 0 Ignored
+OK</code></pre>
+<p><code>simulate</code> writes
+<code>sim/out/charge_balance*.{csv,svg}</code> and
+<code>sim/out/fault_recovery*.{csv,svg}</code>.</p>
+<hr />
+<h2 id="4-task-1--architecture-scheduling-state-machine-safety">4. Task
+1 — architecture, scheduling, state machine, safety</h2>
+<h3 id="41-layering-and-the-dependency-rule">4.1 Layering and the
+dependency rule</h3>
+<pre class="text"><code>APPLICATION     scheduler, state machine, app orchestration, CAN/UDS glue
+     │
+SERVICES        balancing, protection, SOC, CAN signal/matrix, ISO-TP, UDS, NVM
+     │
+DRIVERS         AFE state machine, CAN queue/dispatch, NTC table
+     │
+HAL             time, SPI, contactors, voltages, current, temperature, CAN, NVM,
+     │          critical section, watchdog
+     ├── target: vendor HAL + real peripherals
+     └── PC:     hal_sim.c + afe_sim.c</code></pre>
+<p>The rule is: <strong>arrows point down only.</strong> A service never
+includes a driver or application header. <code>afe.c</code> and
+<code>can_driver.c</code> are the only modules that call the HAL. That
+is what makes balancing, protection, SOC, the signal layer and UDS pure
+logic that runs on a PC with no mocking framework.</p>
+<p>The HAL is an injected ops table (<code>HalOps_t</code>), not
+<code>#ifdef</code> and not weak symbols:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">/* one explicit injection point; wrappers are NULL-safe */</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> <span class="op">{</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint32_t</span> <span class="op">(*</span>time_ms<span class="op">)(</span><span class="dt">void</span><span class="op">);</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">bool</span>     <span class="op">(*</span>spi_transfer<span class="op">)(</span><span class="dt">const</span> <span class="dt">uint8_t</span> <span class="op">*</span>tx<span class="op">,</span> <span class="dt">uint16_t</span> tx_len<span class="op">,</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                             <span class="dt">uint8_t</span> <span class="op">*</span>rx<span class="op">,</span> <span class="dt">uint16_t</span> rx_len<span class="op">);</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span>     <span class="op">(*</span>set_contactor<span class="op">)(</span>HalContactor_t which<span class="op">,</span> <span class="dt">bool</span> closed<span class="op">);</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint16_t</span> <span class="op">(*</span>pack_voltage_mv<span class="op">)(</span><span class="dt">void</span><span class="op">);</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint16_t</span> <span class="op">(*</span>bus_voltage_mv<span class="op">)(</span><span class="dt">void</span><span class="op">);</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int32_t</span>  <span class="op">(*</span>pack_current_ma<span class="op">)(</span><span class="dt">void</span><span class="op">);</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* ... CAN, NVM, critical section, watchdog ... */</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> HalOps_t<span class="op">;</span></span></code></pre></div>
+<p>Why not <code>#ifdef</code>? It makes it hard to build the target and
+the simulator from one tree and it hides which calls are hardware
+access. Why not weak symbols? Toolchain-specific and easy to link the
+wrong implementation silently. Why not a full RTOS HAL? The assignment
+does not need threads.</p>
+<h3 id="42-scheduling">4.2 Scheduling</h3>
+<p><strong>Chosen:</strong> a fixed cyclic executive. A 1 ms tick runs a
+table of five entries in registration order. The 1 ms entry is the
+<strong>scheduler quantum</strong>: it advances the AFE state machine by
+one bounded SPI transaction, drains CAN and kicks the watchdog. The
+control cycles required by the brief are the <strong>10 ms fast
+task</strong> (current, over-current, protection, state machine) and the
+<strong>100 ms main task</strong> (AFE cycle, balancing, CAN Tx). The
+order is the priority order.</p>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Task</th>
+<th>Period</th>
+<th style="text-align: right;">Work</th>
+<th style="text-align: right;">Est. WCET</th>
+<th style="text-align: right;">Load</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>tick</code></td>
+<td>1 ms</td>
+<td style="text-align: right;">advance the AFE state machine by one SPI
+transaction; apply a new balancing mask when a snapshot is published;
+drain ≤4 CAN Tx; dispatch ≤8 CAN Rx; kick watchdog</td>
+<td style="text-align: right;">80 µs</td>
+<td style="text-align: right;">8.0 %</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>fast</code></td>
+<td>10 ms</td>
+<td style="text-align: right;">sample current; over-current; VCU
+monitor; protection/DTC; state machine/contactors; SOC; ISO-TP/UDS;
+publish snapshot</td>
+<td style="text-align: right;">40 µs</td>
+<td style="text-align: right;">0.40 %</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>main</code></td>
+<td>100 ms</td>
+<td style="text-align: right;">force balancing off, start the AFE
+conversion, send 0x350/0x351, persist when due</td>
+<td style="text-align: right;">60 µs</td>
+<td style="text-align: right;">0.06 %</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>cellstats</code></td>
+<td>500 ms</td>
+<td style="text-align: right;">send 0x352</td>
+<td style="text-align: right;">15 µs</td>
+<td style="text-align: right;">0.003 %</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>slow</code></td>
+<td>1000 ms</td>
+<td style="text-align: right;">send 0x353 (6 mux frames) + 0x354</td>
+<td style="text-align: right;">60 µs</td>
+<td style="text-align: right;">0.006 %</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"><strong>≈ 8.5 %</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The 8.0 % for the tick is a deliberate <strong>upper bound</strong>:
+it charges 80 µs to every millisecond. The AFE is only active for about
+22 ms of each 100 ms cycle, so the steady-state average is closer to 1–2
+%. The bound is used so the timing budget cannot be argued downward.</p>
+<p>Worst-case 1 ms tick: all five entries due at once ≈ 255 µs, still
+below the 1 ms quantum. The 10 ms fast task therefore has at least 9.7
+ms of slack in every period.</p>
+<p><strong>Overrun policy.</strong> If a task&#39;s deadline has passed when
+it is next considered, the scheduler runs it once, re-bases the deadline
+to <code>now + period</code>, and increments an overrun counter. It does
+<strong>not</strong> catch up. Catching up would turn one late task into
+a burst of late work and could cascade into a missed watchdog. A missed
+deadline becomes observable telemetry instead of a hidden latency
+spike.</p>
+<p><strong>Why not an RTOS?</strong> Five fixed periodic entries do not
+justify the footprint, the priority-inversion analysis, the per-task
+stacks or the loss of host reproducibility. Why not a bare super-loop
+with delays? Blocking delays destroy jitter and make WCET unbounded,
+which contradicts the requirement. Why not timer-ISR work? Long ISRs
+block everything and are not composable with SPI/CAN. The full
+comparison is in §14.</p>
+<p><strong>The NVM caveat.</strong> On the PC, <code>Hal_NvmWrite</code>
+is a memory copy. On target, a data-flash page erase + program can take
+tens of milliseconds. A synchronous call from the 100 ms main task would
+delay the 10 ms fast task by the same amount, which is <strong>not
+acceptable</strong> for the over-current path. The operation is isolated
+behind <code>Hal_NvmWrite</code>; the production implementation must be
+page-buffered/non-blocking, or the save must be deferred to STANDBY. The
+delivered PC HAL keeps the build and tests deterministic. This is the
+top item in §19.</p>
+<h3 id="43-state-machine">4.3 State machine</h3>
+<pre class="text"><code>                 ┌─────────┐
+                 │  INIT   │
+                 └────┬────┘
+        valid AFE + 200 ms
+                      ▼
+                 ┌─────────┐  sleep request   ┌─────────┐
+                 │ STANDBY │ ───────────────► │  SLEEP  │
+                 └────┬────┘ ◄─────────────── └─────────┘
+      close request  │        wake + VCU valid
+                      ▼
+                 ┌───────────┐   bus ≥ 95 % + 20 ms   ┌─────────┐
+                 │ PRECHARGE │ ─────────────────────► │  DRIVE  │
+                 └─────┬─────┘                        └────┬────┘
+        charger present│                                  │
+                      ▼                                   │
+                 ┌─────────┐  charger removed             │
+                 │ CHARGE  │ ─────────────────────────────┘
+                 └────┬────┘
+                      │ fault (any state)
+                      ▼
+                 ┌─────────┐  no fault + 1 s
+                 │  FAULT  │ ───────────────► STANDBY
+                 └─────────┘</code></pre>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Contactors</th>
+<th>Entry/exit behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>INIT</code></td>
+<td>all open</td>
+<td>wait for a valid AFE snapshot and ≥200 ms; AFE fault →
+<code>FAULT</code></td>
+</tr>
+<tr>
+<td><code>STANDBY</code></td>
+<td>all open</td>
+<td>close request + valid measurements → <code>PRECHARGE</code>; sleep →
+<code>SLEEP</code>; fault → <code>FAULT</code></td>
+</tr>
+<tr>
+<td><code>PRECHARGE</code></td>
+<td>NEG on, PRE on after 20 ms</td>
+<td>wait for <code>bus ≥ 0.95 × pack</code> (2 s timeout); then 20 ms
+overlap, POS on, PRE off → <code>DRIVE</code>/<code>CHARGE</code></td>
+</tr>
+<tr>
+<td><code>DRIVE</code></td>
+<td>NEG + POS on</td>
+<td>request removed or VCU lost 1 s → <code>STANDBY</code>; fault →
+<code>FAULT</code></td>
+</tr>
+<tr>
+<td><code>CHARGE</code></td>
+<td>NEG + POS on</td>
+<td>as DRIVE; charger disappears → <code>DRIVE</code></td>
+</tr>
+<tr>
+<td><code>FAULT</code></td>
+<td>held up to 1 s, then open</td>
+<td>return to <code>STANDBY</code> after 1 s with no active fault</td>
+</tr>
+<tr>
+<td><code>SLEEP</code></td>
+<td>all open</td>
+<td>wake when sleep request removed and VCU valid</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Precharge timing.</strong> The four phases are evaluated
+every 10 ms:</p>
+<ol type="1">
+<li>20 ms settle: NEG on, PRE off, POS off.</li>
+<li>One cycle: PRE on.</li>
+<li>Wait for bus ≥ 95 % of pack, timeout 2 s.</li>
+<li>20 ms overlap: POS on, then PRE off on entering DRIVE/CHARGE.</li>
+</ol>
+<p>A 20 ms settle is an engineering choice: it debounces the voltage
+comparison and guarantees overlap when the positive contactor closes. A
+precharge timeout emits a one-cycle pulse that the application feeds to
+protection as <code>FAULT_PRECHARGE</code>; the fault latches and clears
+through the normal DTC path.</p>
+<p><strong>Fault opening policy.</strong> Two independent outputs:</p>
+<ul>
+<li><code>contactor_open_request</code> — open, but first give the VCU 1
+s to reduce current.</li>
+<li><code>contactor_open_immediate</code> — open on the same cycle for
+over-current, hard OV (&gt;3750 mV), hard UV (≤2300 mV) and precharge
+failure.</li>
+</ul>
+<p>This satisfies &quot;never open under high current if it can be avoided&quot;
+without slowing the fast protection paths.</p>
+<p><strong>VCU timeout.</strong> A missing/invalid 0x200 for 300 ms
+moves the system to <code>STANDBY</code> and opens after 1 s. It is
+reported as DTC 0x000A09 but deliberately <strong>excluded</strong> from
+<code>fault_active</code>, so a lost VCU is a communication loss, not a
+latched hardware fault.</p>
+<h3 id="44-data-sharing-and-concurrency">4.4 Data sharing and
+concurrency</h3>
+<p>The application is single-context cooperative. On target the only ISR
+work is the 1 ms tick (increments a volatile counter) and short
+peripheral glue. Rules:</p>
+<ol type="1">
+<li><strong>AFE double buffer.</strong> Two <code>AfeSnapshot_t</code>
+buffers plus a volatile active index. The producer fills the inactive
+buffer, then swaps the index inside a critical section. Consumers copy
+the active buffer under the same section. No SPI runs inside it.</li>
+<li><strong>Short critical sections.</strong> Only the index swap and
+the snapshot copy — no CRC, no loops over 16 cells, no blocking.</li>
+<li><strong><code>volatile</code> only where required.</strong> The
+active index and the tick counter. Arrays touched only in main context
+are not volatile, so the optimizer is not defeated.</li>
+<li><strong>CAN Rx is polled.</strong> <code>CanDrv_Poll()</code> drains
+the HAL queue in the 1 ms tick task and calls handlers in main context.
+Handlers update small records; they do not block.</li>
+<li><strong>Tx queue.</strong> 8 entries, ≤4 sends per poll, drop-newest
+with a counter. A full mailbox never blocks the 100 ms task.</li>
+<li><strong>Application snapshot.</strong>
+<code>App_GetSnapshot()</code> copies under a critical section so the
+simulator, CAN and diagnostics see a coherent set of state, voltages,
+limits and faults.</li>
+</ol>
+<p><strong>Why double buffer, not a mutex or seqlock?</strong> A mutex
+can block and needs an RTOS; a seqlock is elegant but harder to review
+and needs an atomic sequence; a plain volatile array tears between
+fields. Double buffering is allocation-free, gives a consistent 16-cell
+set from one conversion, and the critical section is a few dozen bytes.
+It is the simplest mechanism that is obviously correct.</p>
+<h3 id="45-functional-safety-mindset">4.5 Functional safety mindset</h3>
+<p>The safe state is: <strong>both contactors open, precharge open, CCL
+= DCL = 0, balancing mask = 0, latched DTC recorded.</strong>
+<code>Prot_Update()</code> computes it from a table; application code
+cannot bypass the table.</p>
+<p>Structural mechanisms:</p>
+<table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>What it prevents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Table-driven fault definitions</td>
+<td>Divergent debounce/latch logic copied 11 times</td>
+</tr>
+<tr>
+<td>Independent hard thresholds</td>
+<td>A debounce bug delaying an OV/UV/OC open</td>
+</tr>
+<tr>
+<td>Bounded loops, no allocation, no recursion</td>
+<td>Unbounded latency, fragmentation, stack overflow</td>
+</tr>
+<tr>
+<td>CRC-8 on SPI and safety CAN frames; CRC-16 on NVM</td>
+<td>Silent corruption crossing a boundary</td>
+</tr>
+<tr>
+<td>Watchdog kicked only from the 1 ms tick task</td>
+<td>A wedged scheduler going unnoticed</td>
+</tr>
+<tr>
+<td>Overrun counter</td>
+<td>Missed deadlines hidden as &quot;normal&quot;</td>
+</tr>
+<tr>
+<td>Defensive calibration validation</td>
+<td>Corrupt NVM/balancing config causing unsafe behaviour</td>
+</tr>
+<tr>
+<td>Latch + release + explicit clear</td>
+<td>A transient clear request masking a present fault</td>
+</tr>
+<tr>
+<td>VCU command CRC/alive/jump checks</td>
+<td>Stuck, replayed or spoofed commands</td>
+</tr>
+</tbody>
+</table>
+<p>Out of scope, and stated as such: a full ISO 26262 safety case
+(FMEDA, diagnostic coverage targets, lockstep/dual-channel plausibility,
+secure boot chain). The assignment asks for a mindset, not a
+certification package.</p>
+<hr />
+<h2 id="5-task-2--afe-driver">5. Task 2 — AFE driver</h2>
+<h3 id="51-contract">5.1 Contract</h3>
+<p>SPI frame: <code>[ADDR|R/W] [LEN] [DATA…] [CRC8]</code>, bit 7 of the
+address is write, CRC-8 poly 0x07, init 0x00, no reflection, no final
+XOR. Read response: <code>[DATA…][CRC8]</code>, CRC over the data bytes.
+Device ID register 0x00 returns 0x5A. Cell registers are 16-bit
+big-endian, 100 µV/LSB. A 2 ms conversion is started by writing 0x01 to
+<code>ADC_CTRL</code>.</p>
+<h3 id="52-non-blocking-state-machine">5.2 Non-blocking state
+machine</h3>
+<pre class="text"><code>READ_ID ──ok──► IDLE ──request──► START_CONV ──ok──► WAIT_DONE
+   │                                 │ fail             │ done
+   │ 3 fails                         ▼                  ▼
+   └────────► comm fault        retry ≤ N          READ_CELLS (16 × 1 transaction)
+                                                     │
+                                                     ▼
+                                                 READ_TEMPS (5 × 1 transaction)
+                                                     │
+                                                     ▼
+                                                  PUBLISH</code></pre>
+<ul>
+<li>One SPI transaction per 1 ms scheduler tick.</li>
+<li>A complete 16-cell + 5-temperature cycle takes ≈ 22 ms.</li>
+<li>The 100 ms main task starts a cycle; the 10 ms fast task uses the
+previous completed snapshot, so data is at most ≈ 120 ms old.</li>
+<li><code>Afe_PublishSnapshot()</code> converts, checks the cell-sum
+plausibility, copies flags, swaps the buffer and clears the retry
+counters.</li>
+</ul>
+<h3 id="53-error-handling">5.3 Error handling</h3>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Reaction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Device ID wrong or unreadable, 3 attempts</td>
+<td>latched AFE communication fault, <code>id_failed</code> blocks
+acquisitions</td>
+</tr>
+<tr>
+<td>CRC mismatch</td>
+<td>transaction failure → retry</td>
+</tr>
+<tr>
+<td>SPI transfer failure</td>
+<td>transaction failure → retry</td>
+</tr>
+<tr>
+<td>Conversion not done before deadline</td>
+<td>transaction failure → retry</td>
+</tr>
+<tr>
+<td>Retries exhausted</td>
+<td>failed-cycle counter++; after 3 cycles → latched comm fault, publish
+invalid</td>
+</tr>
+<tr>
+<td>Internal AFE fault / open wire</td>
+<td><code>valid = false</code>, flags in snapshot; protection opens and
+latches</td>
+</tr>
+<tr>
+<td>Cell sum vs pack &gt; 1000 mV</td>
+<td><code>sum_mismatch</code> flag; protection limits CCL/DCL</td>
+</tr>
+</tbody>
+</table>
+<p>A single good cycle clears the failure counters but
+<strong>not</strong> the latched fault; the latch is cleared only
+through <code>Afe_ClearLatchedFault()</code> on the explicit DTC-clear
+path.</p>
+<h3 id="54-snapshot-and-testability">5.4 Snapshot and testability</h3>
+<p>Two buffers, critical-section index swap,
+<code>Afe_GetSnapshot()</code> copies. Tests inject register values
+through <code>afe_sim.c</code> and drive <code>Afe_Poll()</code> with
+synthetic time; no hardware, no sleeps.</p>
+<p><strong>Tests:</strong> device-ID self-test, wrong ID, successful
+acquisition, balancing-mask write, sum mismatch, internal fault/open
+wire, CRC retry then latch, SPI timeout, API guards.</p>
+<hr />
+<h2 id="6-task-3--passive-balancing">6. Task 3 — passive balancing</h2>
+<h3 id="61-requirements-restated-as-gates">6.1 Requirements, restated as
+gates</h3>
+<p>Balancing may bleed only when <strong>all</strong> of these hold.
+First match wins, and the reason is reported in
+<code>Bal_GetStatus().inhibit</code>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Order</th>
+<th>Inhibit</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td><code>BAL_INHIBIT_MEAS_PAUSE</code></td>
+<td>AFE conversion window (application forces mask 0)</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td><code>BAL_INHIBIT_MEAS_INVALID</code></td>
+<td>snapshot invalid / stale</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td><code>BAL_INHIBIT_FAULT</code></td>
+<td>any protection fault active</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td><code>BAL_INHIBIT_VCU_DISABLED</code></td>
+<td>VCU balancing-enable bit is 0</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td><code>BAL_INHIBIT_TIMEOUT</code></td>
+<td>8 h continuous-balancing warning set</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td><code>BAL_INHIBIT_OVER_TEMP</code></td>
+<td>cell ≥ 50.0 °C or board ≥ 70.0 °C; latched until 5 °C below
+both</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td><code>BAL_INHIBIT_DISCHARGE</code></td>
+<td>pack current &lt; −2 A</td>
+</tr>
+<tr>
+<td style="text-align: right;">—</td>
+<td><code>BAL_INHIBIT_NONE</code></td>
+<td>run selection</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-selection-algorithm">6.2 Selection algorithm</h3>
+<pre class="text"><code>every 100 ms:
+  if gate active: mask = 0, active_time = 0 (except measurement pause), report reason
+  else:
+    find vmin, vmax
+    if vmax &lt; 3400 mV: mask = 0                  # LFP top-of-charge gate
+    else:
+      candidates = cells where
+          (was bleeding  AND vcell - vmin &gt;= 5 mV)   # stop threshold
+       or (not bleeding AND vcell - vmin &gt; 15 mV)   # start threshold
+      sort candidates: priority cell first if within 20 mV of vmax,
+                       then by descending voltage, ties by index
+      for each candidate:
+          stop if 8 selected
+          skip if adding it creates an adjacent pair
+          remember the first skipped cell as next cycle&#39;s priority
+      mask = selected
+      accumulate active time; at 8 h: mask = 0, warning, inhibit</code></pre>
+<p><strong>Why 15/5 mV hysteresis?</strong> A single threshold chatters
+when a cell sits near the boundary and the bleed current perturbs the
+measurement. 15 mV start / 5 mV stop gives a 10 mV dead band, so a cell
+that starts bleeding keeps bleeding until it is genuinely closer to the
+pack minimum.</p>
+<p><strong>Why max 8 cells?</strong> The board thermal limit and the
+adjacency rule both cap the theoretical maximum at 8 (16 cells, no two
+neighbours). The configuration is validated to 1…16.</p>
+<p><strong>How starvation is prevented.</strong> A naive loop always
+drops the same lowest-priority cell of an adjacent pair. The algorithm
+records the first cell rejected by the max-cell or adjacency rule and
+promotes it to the front of the next cycle&#39;s candidate list — but only
+if it is within 20 mV of <code>Vmax</code>. A genuinely much-higher cell
+still wins. This is deterministic, bounded and directly targets the cell
+that missed out; random or fixed odd/even schemes are neither.</p>
+<p><strong>Why an 8 h timeout?</strong> Continuous bleeding for days is
+a symptom (a cell that never converges, a measurement offset, a stuck
+switch). The timeout stops it, raises a warning and requires a charge
+cycle to clear. It is a warning, not a DTC, because it is not a pack
+hazard by itself.</p>
+<p><strong>Measurement-window pause.</strong> The application forces the
+mask to 0 before starting a conversion and restores the newly computed
+mask when a snapshot is published. This prevents the bleed current&#39;s IR
+drop from corrupting the cell voltage being measured. The cost is ≈ 22
+ms of every 100 ms cycle, so the maximum duty is ≈ 78 %.</p>
+<h3 id="63-voltage-based-vs-soc-based-balancing-required-comparison">6.3
+Voltage-based vs SOC-based balancing (required comparison)</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Voltage-based (chosen)</th>
+<th>SOC-based</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Input</td>
+<td>per-cell voltage from the AFE</td>
+<td>per-cell SOC estimate</td>
+</tr>
+<tr>
+<td>Works in the flat LFP region</td>
+<td>No — gated to <code>Vmax ≥ 3.4 V</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Hardware needed</td>
+<td>the AFE already in the BOM</td>
+<td>per-cell current sensing or a validated cell model</td>
+</tr>
+<tr>
+<td>Robust to capacity mismatch</td>
+<td>Yes</td>
+<td>Less so; depends on the model</td>
+</tr>
+<tr>
+<td>Sensitivity</td>
+<td>measurement offset and IR drop</td>
+<td>model error, offset error, integration drift</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>passive bleed, top-of-charge balancing</td>
+<td>active balancing, flat-region balancing, degradation management</td>
+</tr>
+</tbody>
+</table>
+<p>For a 16S1P LFP pack with one pack current sensor and 39 Ω passive
+bleed resistors, voltage-based top-balancing is the right engineering
+choice. SOC-based balancing is listed as a future extension if per-cell
+SOC becomes available.</p>
+<h3 id="64-complexity-stack-and-verification">6.4 Complexity, stack and
+verification</h3>
+<ul>
+<li>One 16-cell min/max scan, one candidate scan, insertion sort with
+≤120 comparisons, one selection pass = O(n²), n fixed at 16, no
+recursion, no allocation.</li>
+<li><code>Bal_Run</code> stack frame: 112 B including
+<code>candidates[16]</code>.</li>
+<li>Tests: S1–S10 plus 7 cases (validation, measurement pause, VCU
+disable, max-cell exhaustion, adjacency-after-limit, priority selection,
+sort ties).</li>
+<li>Coverage: 100 % lines, 96.08 % branches taken.</li>
+</ul>
+<h3 id="65-the-mandatory-scenarios">6.5 The mandatory scenarios</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Scenario</th>
+<th>Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1</td>
+<td>all cells below 3.4 V</td>
+<td>mask 0</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>one cell clearly highest</td>
+<td>only that cell</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>two adjacent high cells alternate</td>
+<td>never both; priority alternates</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>more than 8 cells qualify</td>
+<td>≤8, no adjacent pair</td>
+</tr>
+<tr>
+<td>S5/S6</td>
+<td>hysteresis</td>
+<td>start &gt;15 mV, continue ≥5 mV</td>
+</tr>
+<tr>
+<td>S7</td>
+<td>over-temperature</td>
+<td>inhibit, latch, resume only 5 °C below</td>
+</tr>
+<tr>
+<td>S8</td>
+<td>discharge &lt; −2 A</td>
+<td>inhibit immediately</td>
+</tr>
+<tr>
+<td>S9</td>
+<td>invalid measurement / active fault</td>
+<td>mask 0 on the same cycle</td>
+</tr>
+<tr>
+<td>S10</td>
+<td>8 h timeout and charge reset</td>
+<td>mask 0, warning, cleared by charge</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-task-4--protection-and-dtcs">7. Task 4 — protection and
+DTCs</h2>
+<h3 id="71-table-driven-design">7.1 Table-driven design</h3>
+<p><code>FaultDef_t</code> holds: DTC, set threshold, release threshold,
+debounce, latch, action mask, set/release condition functions, and an
+optional hard threshold. One generic object (<code>active</code>,
+<code>pending</code>, <code>confirmed</code>, <code>release_ok</code>,
+timer, ISO 14229 status) implements all 11.</p>
+<p>Why? Eleven copied <code>if</code> blocks diverge over time, and the
+DTC status logic becomes untestable. The table makes thresholds, actions
+and release conditions data; one state machine executes them. Adding a
+fault is a table row plus a condition pair.</p>
+<h3 id="72-fault-table">7.2 Fault table</h3>
+<table>
+<thead>
+<tr>
+<th>Fault</th>
+<th>DTC</th>
+<th>Set</th>
+<th style="text-align: right;">Debounce</th>
+<th>Release</th>
+<th>Latch</th>
+<th>Reaction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cell OV</td>
+<td>0x000A01</td>
+<td>any ≥3650 mV</td>
+<td style="text-align: right;">1 s</td>
+<td>all ≤3400 mV</td>
+<td>yes</td>
+<td>CCL 0; open &gt;3750 mV immediately</td>
+</tr>
+<tr>
+<td>Cell UV</td>
+<td>0x000A02</td>
+<td>any ≤2500 mV</td>
+<td style="text-align: right;">1 s</td>
+<td>all ≥2900 mV</td>
+<td>yes</td>
+<td>DCL 0; open ≤2300 mV immediately</td>
+</tr>
+<tr>
+<td>Charge OT</td>
+<td>0x000A03</td>
+<td>Tmax ≥55 °C while charging</td>
+<td style="text-align: right;">2 s</td>
+<td>Tmax ≤50 °C</td>
+<td>no</td>
+<td>CCL 0</td>
+</tr>
+<tr>
+<td>Discharge OT</td>
+<td>0x000A04</td>
+<td>Tmax ≥60 °C</td>
+<td style="text-align: right;">2 s</td>
+<td>Tmax ≤55 °C</td>
+<td>yes</td>
+<td>open</td>
+</tr>
+<tr>
+<td>Charge UT</td>
+<td>0x000A05</td>
+<td>Tmin ≤0 °C while charging</td>
+<td style="text-align: right;">2 s</td>
+<td>Tmin ≥3 °C</td>
+<td>no</td>
+<td>CCL 0</td>
+</tr>
+<tr>
+<td>Discharge OC</td>
+<td>0x000A06</td>
+<td>I ≤ −200 A</td>
+<td style="text-align: right;">500 ms</td>
+<td>—</td>
+<td>yes</td>
+<td>open immediately</td>
+</tr>
+<tr>
+<td>Charge OC</td>
+<td>0x000A07</td>
+<td>I ≥ +100 A</td>
+<td style="text-align: right;">1 s</td>
+<td>—</td>
+<td>yes</td>
+<td>open immediately</td>
+</tr>
+<tr>
+<td>AFE comm</td>
+<td>0x000A08</td>
+<td>3 failed cycles</td>
+<td style="text-align: right;">—</td>
+<td>good cycle</td>
+<td>yes</td>
+<td>open</td>
+</tr>
+<tr>
+<td>VCU timeout</td>
+<td>0x000A09</td>
+<td>no valid 0x200 for 300 ms</td>
+<td style="text-align: right;">—</td>
+<td>valid frame</td>
+<td>no</td>
+<td>STANDBY; open after 1 s</td>
+</tr>
+<tr>
+<td>Cell-sum mismatch</td>
+<td>0x000A0A</td>
+<td>|Σcells − pack| &gt;1000 mV</td>
+<td style="text-align: right;">—</td>
+<td>in tolerance</td>
+<td>no</td>
+<td>CCL/DCL 0</td>
+</tr>
+<tr>
+<td>Precharge</td>
+<td>0x000A0B</td>
+<td>bus &lt;95 % after 2 s</td>
+<td style="text-align: right;">—</td>
+<td>—</td>
+<td>yes</td>
+<td>open immediately</td>
+</tr>
+</tbody>
+</table>
+<p>&quot;Charging&quot; is <code>I &gt; +500 mA</code>; &quot;discharging&quot; is
+<code>I &lt; −500 mA</code>. The dead band prevents temperature faults
+chattering around zero.</p>
+<p>The current sensor is specified as ±300 A. The over-current
+thresholds are deliberately set below full scale — 200 A discharge and
+100 A charge — so the comparator trips while the signal is still in its
+linear range and the contactor opens before the sensor saturates. The
+thresholds are configuration, not hard-coded to the sensor range.</p>
+<h3 id="73-debounce-semantics">7.3 Debounce semantics</h3>
+<pre class="text"><code>set condition true  ──► timer += dt
+                        timer &gt;= debounce?
+                            yes: active = true, latch if configured
+set condition false ──► timer = 0        # a single bad sample cannot accumulate
+active + release true ──► release_ok = true
+release false         ──► release_ok = false
+clear request + release_ok + latched ──► clear active/latch, record &quot;since clear&quot;
+clear request while condition present ──► ignored</code></pre>
+<p>An accumulated timer is used instead of a timestamp because it is
+explicit about elapsed time, works with a variable step, is immune to
+clock wrap, and is trivial to test with synthetic time.</p>
+<h3 id="74-iso-14229-status-bits">7.4 ISO 14229 status bits</h3>
+<table>
+<thead>
+<tr>
+<th>Bit</th>
+<th>Name</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x01</td>
+<td>testFailed</td>
+<td>condition currently true</td>
+</tr>
+<tr>
+<td>0x02</td>
+<td>testFailedThisCycle</td>
+<td>failed since the last 0x14/cycle reset</td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>pending</td>
+<td>debounce running, not confirmed</td>
+</tr>
+<tr>
+<td>0x08</td>
+<td>confirmed</td>
+<td>debounce elapsed and latched</td>
+</tr>
+<tr>
+<td>0x10</td>
+<td>testNotCompletedSinceClear</td>
+<td>cleared, not re-tested</td>
+</tr>
+<tr>
+<td>0x20</td>
+<td>testFailedSinceClear</td>
+<td>failed at least once since clear</td>
+</tr>
+<tr>
+<td>0x40</td>
+<td>testNotCompletedThisCycle</td>
+<td>not tested this cycle</td>
+</tr>
+<tr>
+<td>0x80</td>
+<td>warning</td>
+<td>warning-class fault</td>
+</tr>
+</tbody>
+</table>
+<p>UDS 0x19 0x02 returns three DTC bytes plus the status byte for
+records matching the request mask. The availability mask is 0xFF.
+Manufacturer range <code>0x000A01…0x000A0B</code> is used because the
+assignment does not assign numbers; a production project would take the
+OEM allocation.</p>
+<h3 id="75-ccldcl-derating">7.5 CCL/DCL derating</h3>
+<table>
+<thead>
+<tr>
+<th>Limit</th>
+<th>Temperature / voltage</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CCL</td>
+<td>≤0.0 °C</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>0.0–5.0 °C</td>
+<td>0 → 50 A</td>
+</tr>
+<tr>
+<td></td>
+<td>5.0–45.0 °C</td>
+<td>100 A</td>
+</tr>
+<tr>
+<td></td>
+<td>45.0–55.0 °C</td>
+<td>100 → 0 A</td>
+</tr>
+<tr>
+<td></td>
+<td>≥55.0 °C</td>
+<td>0</td>
+</tr>
+<tr>
+<td>DCL</td>
+<td>≤−20.0 °C</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>−20.0–0.0 °C</td>
+<td>0 → 100 A</td>
+</tr>
+<tr>
+<td></td>
+<td>0.0–45.0 °C</td>
+<td>200 A</td>
+</tr>
+<tr>
+<td></td>
+<td>45.0–60.0 °C</td>
+<td>200 → 0 A</td>
+</tr>
+<tr>
+<td></td>
+<td>≥60.0 °C</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Charge voltage</td>
+<td>≤3550 mV</td>
+<td>100 A</td>
+</tr>
+<tr>
+<td></td>
+<td>3550–3650 mV</td>
+<td>100 → 0 A</td>
+</tr>
+<tr>
+<td></td>
+<td>≥3650 mV</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Discharge voltage</td>
+<td>≤2500 mV</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>2500–3000 mV</td>
+<td>0 → 200 A</td>
+</tr>
+<tr>
+<td></td>
+<td>≥3000 mV</td>
+<td>200 A</td>
+</tr>
+</tbody>
+</table>
+<p>Final CCL/DCL = minimum of the temperature and voltage limits, ramped
+at 100 mA/ms (10 A per 100 ms). Both start at 0 at boot so the first CAN
+frame cannot command a step. <code>charge_enable</code> is false when
+CCL is 0, an open request is active, or a charge-limiting fault is
+active.</p>
+<p><strong>Tests:</strong> each fault has set, debounce-reset and
+release cases; hard-threshold and immediate-open paths; derating and
+ramp; DTC indexing; output defaults. Coverage: 97.30 % lines, 91.38 %
+branches taken.</p>
+<hr />
+<h2 id="8-task-5--can-dbc-and-uds">8. Task 5 — CAN, DBC and UDS</h2>
+<h3 id="81-message-matrix">8.1 Message matrix</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Message</th>
+<th style="text-align: right;">DLC</th>
+<th style="text-align: right;">Period</th>
+<th>Content</th>
+<th>CRC / alive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x350</td>
+<td><code>BMS_PackStatus</code></td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">100 ms</td>
+<td>pack voltage, current, SOC, state, alive</td>
+<td>CRC byte 7, alive bits 44–47</td>
+</tr>
+<tr>
+<td>0x351</td>
+<td><code>BMS_Limits</code></td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">100 ms</td>
+<td>CCL, DCL, charge voltage request, enable, alive</td>
+<td>CRC byte 7, alive bits 52–55</td>
+</tr>
+<tr>
+<td>0x352</td>
+<td><code>BMS_CellStats</code></td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">500 ms</td>
+<td>Vmax/Vmin + indices, Tmax/Tmin</td>
+<td>none</td>
+</tr>
+<tr>
+<td>0x353</td>
+<td><code>BMS_CellVoltages</code></td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1000 ms</td>
+<td>mux 0–5, 3 cells, 3 balance bits</td>
+<td>none</td>
+</tr>
+<tr>
+<td>0x354</td>
+<td><code>BMS_Faults</code></td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1000 ms + on change</td>
+<td>fault bits, warning bits, active DTC count</td>
+<td>none</td>
+</tr>
+<tr>
+<td>0x200</td>
+<td><code>VCU_Command</code></td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">100 ms (Rx)</td>
+<td>contactor request, balancing enable, sleep, fault clear, alive</td>
+<td>CRC byte 7, alive bits 52–55</td>
+</tr>
+</tbody>
+</table>
+<p>All signals are Intel (little-endian). The DBC uses decimal IDs
+848–852 and 512.</p>
+<h3 id="82-signal-layer">8.2 Signal layer</h3>
+<p>A descriptor is the single source of truth:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">typedef</span> <span class="kw">struct</span> <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint8_t</span>  start_bit<span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">uint8_t</span>  length<span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    CanSigType_t type<span class="op">;</span>      <span class="co">/* unsigned / signed */</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int32_t</span>  scale_num<span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int32_t</span>  scale_den<span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int32_t</span>  offset<span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int32_t</span>  phys_min<span class="op">;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int32_t</span>  phys_max<span class="op">;</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> CanSignalDef_t<span class="op">;</span></span></code></pre></div>
+<p>Packing:</p>
+<ol type="1">
+<li>saturate the physical value to
+<code>[phys_min, phys_max]</code>;</li>
+<li>subtract the offset, multiply by <code>den</code>, divide by
+<code>num</code> with round-to-nearest;</li>
+<li>clamp to the raw range for the bit length and signedness;</li>
+<li>write bits little-endian across byte boundaries into a cleared
+frame;</li>
+<li>compute the CRC last, over bytes 0–6.</li>
+</ol>
+<p>Why a table? Hand-written shifts duplicate sign extension, offset and
+cross-byte logic for every signal, and those are the classic CAN bugs.
+The table is tested once and reused for every message. Why not a struct
+overlay? Alignment, packing, endianness and strict aliasing make it
+undefined behaviour; see the review in §10.</p>
+<p><strong>Vertical signals</strong>: <code>PackVoltage</code> 0.01
+V/bit, <code>PackCurrent</code> 0.1 A/bit signed (positive = charge),
+<code>SOC</code> 0.5 %/bit, <code>CCL</code>/<code>DCL</code> 0.1 A/bit,
+temperatures 1 °C/bit with −40 offset.</p>
+<h3 id="83-vcu-command-supervision">8.3 VCU command supervision</h3>
+<p>The receiver rejects, separately counted:</p>
+<ul>
+<li>wrong DLC;</li>
+<li>wrong CRC;</li>
+<li>an unchanged 4-bit alive counter;</li>
+<li>an alive jump &gt; 2 (mod 16).</li>
+</ul>
+<p>Three consecutive invalid frames are treated as a timeout. A single
+lost frame does not trip it; a stuck or spoofed counter does. A timeout
+moves the state machine to STANDBY and opens after 1 s, and raises DTC
+0x000A09.</p>
+<h3 id="84-uds-subset">8.4 UDS subset</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Sub / DID</th>
+<th>Response</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x10</td>
+<td>01 default, 02 extended</td>
+<td>0x50</td>
+<td>extended S3 = 5 s</td>
+</tr>
+<tr>
+<td>0x3E</td>
+<td>00, 80</td>
+<td>0x7E</td>
+<td>0x80 suppresses the positive response</td>
+</tr>
+<tr>
+<td>0x22</td>
+<td>0xF189</td>
+<td>software version ASCII</td>
+<td><code>BMS-FW-1.0.0</code></td>
+</tr>
+<tr>
+<td>0x22</td>
+<td>0x0101</td>
+<td>pack mV (2 B) + current mA (4 B signed)</td>
+<td></td>
+</tr>
+<tr>
+<td>0x22</td>
+<td>0x0100</td>
+<td>16 × 2 B cell mV = 32 B</td>
+<td>requires ISO-TP multi-frame</td>
+</tr>
+<tr>
+<td>0x2E</td>
+<td>0x0200 / 0x0201</td>
+<td>0x6E</td>
+<td>balancing start/stop; extended only; 5–50 mV; stop &lt; start</td>
+</tr>
+<tr>
+<td>0x19</td>
+<td>02</td>
+<td>0x59 + availability + DTC/status records</td>
+<td>mask-filtered</td>
+</tr>
+<tr>
+<td>0x14</td>
+<td>0xFFFFFF</td>
+<td>0x54</td>
+<td>other groups → NRC 0x31</td>
+</tr>
+</tbody>
+</table>
+<p>NRCs: 0x11 service not supported, 0x12 subfunction not supported,
+0x13 incorrect length, 0x22 conditions not correct, 0x31 request out of
+range, 0x7F service not supported in session.</p>
+<h3 id="85-iso-tp-multi-frame-sequence">8.5 ISO-TP multi-frame
+sequence</h3>
+<p>The BMS is the responder. For DID 0x0100 (32 bytes):</p>
+<pre class="text"><code>tester → BMS   0x7E0  SF  [02 22 01 00 ...]        request
+BMS → tester   0x7E8  FF  [10 24 62 01 00 ...]     32-byte length, first 6 bytes
+tester → BMS   0x7E8  FC  [30 00 00 ...]           continue, block size, STmin
+BMS → tester   0x7E8  CF  [21 ...]                 7 bytes
+BMS → tester   0x7E8  CF  [22 ...]                 ...</code></pre>
+<p>Block size and STmin are honoured on transmit; the sender waits for
+FC between blocks and aborts after the FC timeout. Only one reception
+and one transmission are active at a time, which is sufficient for a
+request/response server. No CAN-FD, no extended addressing.</p>
+<h3 id="86-dbc">8.6 DBC</h3>
+<p><code>dbc/bms.dbc</code> contains every message and signal, value
+tables for BMS state and VCU commands, cycle-time attributes, comments
+documenting CRC/alive and scaling, and multiplexed cell signals for all
+six mux values. The six mux copies exist because classic DBC assigns one
+mux value per signal; duplicating the three-signal layout is the
+portable way to let generic tools decode every frame.</p>
+<hr />
+<h2 id="9-task-6--tests-simulation-static-analysis-coverage">9. Task 6 —
+tests, simulation, static analysis, coverage</h2>
+<h3 id="91-test-strategy">9.1 Test strategy</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>How it is tested</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Common</td>
+<td>pure functions</td>
+<td>CRC vectors, saturation boundaries</td>
+</tr>
+<tr>
+<td>HAL</td>
+<td>simulator contract</td>
+<td>time, SPI, contactors, NVM</td>
+</tr>
+<tr>
+<td>AFE</td>
+<td>register model + synthetic time</td>
+<td>ID, CRC retry, timeout, snapshot</td>
+</tr>
+<tr>
+<td>Balancing</td>
+<td>table-driven inputs</td>
+<td>S1–S10 + 7 cases</td>
+</tr>
+<tr>
+<td>Protection</td>
+<td>synthetic time steps</td>
+<td>set, reset, release, clear, hard open</td>
+</tr>
+<tr>
+<td>CAN</td>
+<td>round-trip pack/unpack</td>
+<td>scale, saturation, CRC, alive, queue</td>
+</tr>
+<tr>
+<td>UDS/ISO-TP</td>
+<td>byte-level requests</td>
+<td>sessions, DIDs, NRCs, FC/CF, block boundary</td>
+</tr>
+<tr>
+<td>SOC</td>
+<td>synthetic current/rest</td>
+<td>counting, offset, flat/edge correction</td>
+</tr>
+<tr>
+<td>State machine</td>
+<td>direct input records</td>
+<td>every transition, precharge, fault hold</td>
+</tr>
+<tr>
+<td>NVM</td>
+<td>A/B slot corruption</td>
+<td>valid, corrupt, blank, sequence, CRC</td>
+</tr>
+</tbody>
+</table>
+<p>88 tests, 0 failures. <code>ctest</code> runs the same binary.</p>
+<h3 id="92-coverage">9.2 Coverage</h3>
+<p>Built with <code>-DBMS_COVERAGE=ON</code>
+(<code>--coverage -O0</code>), run the full suite, then
+<code>gcov -b -c</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th style="text-align: right;">Lines</th>
+<th style="text-align: right;">Branches executed</th>
+<th style="text-align: right;">Taken at least once</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>balancing.c</code></td>
+<td style="text-align: right;">100.00 % (168)</td>
+<td style="text-align: right;">100.00 % (102)</td>
+<td style="text-align: right;"><strong>96.08 %</strong> (102)</td>
+</tr>
+<tr>
+<td><code>protection.c</code></td>
+<td style="text-align: right;">97.30 % (259)</td>
+<td style="text-align: right;">100.00 % (174)</td>
+<td style="text-align: right;"><strong>91.38 %</strong> (174)</td>
+</tr>
+</tbody>
+</table>
+<p>The reported branch metric is the strict one: the fraction of branch
+<strong>outcomes</strong> executed at least once. &quot;Branches executed&quot;
+only counts branches reached, so it is weaker; both numbers are reported
+to avoid ambiguity. Both modules exceed the 85 % target. The unexecuted
+protection lines are defensive paths that need corrupted internal state
+and are unreachable through the public API.</p>
+<h3 id="93-simulation">9.3 Simulation</h3>
+<p>Two CSV scenarios run the real application modules against the
+simulated HAL.</p>
+<p><strong><code>charge_balance.csv</code> (260 s)</strong> — charge
+current, one weak cell, balancing enabled: observed cell 5 balancing
+mask from ≈20.1 s to 140 s; cell 5 converges toward the pack minimum;
+SOC rises; CCL derates near the top.</p>
+<p><strong><code>fault_recovery.csv</code> (100 s)</strong> — one cell
+crosses the OV threshold at ≈25 s: fault trips at <strong>31.1
+s</strong> (1 s debounce + 10 ms task), contactors open after the 1 s
+hold, DTC latches, clear request at 70 s releases it and the system
+returns to STANDBY.</p>
+<p>The trace columns are
+<code>time_ms,state,soc_permille,current_ma,cell0_mv..cell4_mv,temp0_dc, bal_mask,bal_inhibit,ccl_ma,dcl_ma,neg,pre,pos,fault_bits</code>.
+Five SVG plots are generated:</p>
+<ul>
+<li><code>charge_balance_voltage.svg</code> — cell 1 vs cell 5;</li>
+<li><code>charge_balance_balance.svg</code> — mask over time;</li>
+<li><code>charge_balance_soc.svg</code> — SOC over time;</li>
+<li><code>fault_recovery_voltage.svg</code> — faulted cell;</li>
+<li><code>fault_recovery_contacts.svg</code> — contactors and fault
+bits.</li>
+</ul>
+<p>Why a custom SVG plotter? gnuplot and Python were not available; a
+300-line C tool with fixed buffers keeps the toolchain to the same
+compiler, uses no allocation, and produces artefacts that can be
+committed and opened in any browser.</p>
+<h3 id="94-static-analysis">9.4 Static analysis</h3>
+<pre class="text"><code>cppcheck --enable=warning,style,performance,portability --std=c11 \
+         --suppress=missingIncludeSystem --suppress=unusedFunction \
+         -I src src</code></pre>
+<p>Cppcheck 2.22.0, 18 translation units, <strong>no findings</strong>.
+The two suppressions are justified: the target SDK headers are not
+installed, and public service APIs are consumed by tests and the
+simulator rather than from within their own file. clang-tidy and the
+MISRA add-on were not available; that is stated rather than papered
+over.</p>
+<h3 id="95-what-the-evidence-proves">9.5 What the evidence proves</h3>
+<ul>
+<li>The mandatory scenarios are encoded as tests, not prose.</li>
+<li>Branch coverage above 85 % is measured with the stricter &quot;taken&quot;
+metric.</li>
+<li>No static-analysis findings in the shipped firmware sources.</li>
+<li>The strict warning set passes with <code>-Werror</code>.</li>
+<li>The simulation demonstrates the two end-to-end behaviours a reviewer
+cares about: balancing actually converges, and a fault actually trips,
+latches, clears and recovers.</li>
+</ul>
+<hr />
+<h2 id="10-task-7--code-review">10. Task 7 — code review</h2>
+<p>The full review is in <a href="../CODE_REVIEW.md"><code>CODE_REVIEW.md</code></a>. It covers the
+three listings in the brief and reports <strong>47 findings: 19
+critical, 17 major, 10 minor, 1 nit.</strong></p>
+<p>The five root causes:</p>
+<ol type="1">
+<li><strong>No ISR/task ownership boundary.</strong> The supplied
+handler parses a 64-byte frame, calls <code>log()</code>, opens
+contactors, sets DTCs, writes SPI and sends CAN inside the SPI
+interrupt. The corrected design moves bytes only in the ISR and runs a
+state machine in the 1 ms task.</li>
+<li><strong>No error path.</strong> Unchecked reads, ignored return
+values, no conversion timeout, no retry limit. The corrected AFE has a
+deadline, a retry counter and a latched comm fault.</li>
+<li><strong>No safety policy in the algorithm.</strong> The supplied
+balancing function has no measurement-window, temperature, fault, VCU or
+discharge gate, and no max-cell or timeout limit. The corrected
+<code>Bal_Run</code> makes every gate explicit.</li>
+<li><strong>The wire contract is duplicated by hand.</strong> The
+supplied CAN function writes millivolts and amps into signals scaled as
+0.01 V and 0.1 A, omits the CRC, and puts the alive counter in the wrong
+byte. The corrected signal table derives layout and scale from one
+definition, and the DBC is the external check.</li>
+<li><strong>Undefined behaviour.</strong> <code>i &lt;= 16</code>,
+<code>1 &lt;&lt; 16</code>, a signed right shift, and a struct overlay
+on a byte buffer. The corrected code uses bounded loops, unsigned masks,
+explicit two&#39;s-complement conversion and bit-level packing.</li>
+</ol>
+<p>The review verdict is <strong>changes required</strong>, with six
+acceptance criteria: no parsing in the ISR; no volatile array treated as
+atomic; every loop bounded and every blocking call timed; every signal
+decoded by a DBC-derived test; every fault tested for
+set/reset/release/clear; strict build + cppcheck + coverage. All six are
+met by the delivered tree.</p>
+<hr />
+<h2 id="11-task-8--documentation-and-code-quality">11. Task 8 —
+documentation and code quality</h2>
+<h3 id="111-documentation-set">11.1 Documentation set</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>README.md</code></td>
+<td>one-command build, layout, design summary, SOC/voltage comparison,
+traceability, AI disclosure, licences</td>
+</tr>
+<tr>
+<td><code>docs/DESIGN.md</code></td>
+<td>Task 1 detail, task table, state machine, fault table, alternatives
+log, limitations</td>
+</tr>
+<tr>
+<td><code>ASSUMPTIONS.md</code></td>
+<td>A1–J4: platform, AFE, state machine, balancing, protection, CAN/UDS,
+SOC, NVM, tooling, safety</td>
+</tr>
+<tr>
+<td><code>CODE_REVIEW.md</code></td>
+<td>Task 7: findings, severity, fixes, corrected code, re-review
+criteria</td>
+</tr>
+<tr>
+<td><code>docs/coverage.txt</code></td>
+<td>exact commands and gcov results</td>
+</tr>
+<tr>
+<td><code>docs/static_analysis.txt</code></td>
+<td>exact cppcheck command, result, suppressions, manual review
+notes</td>
+</tr>
+<tr>
+<td><code>dbc/bms.dbc</code></td>
+<td>external CAN contract</td>
+</tr>
+<tr>
+<td>this document</td>
+<td>the single end-to-end answer</td>
+</tr>
+</tbody>
+</table>
+<h3 id="112-code-quality-rules-applied">11.2 Code-quality rules
+applied</h3>
+<ul>
+<li>C11, <code>stdint.h</code>/<code>stdbool.h</code> only; no compiler
+extensions.</li>
+<li>No dynamic allocation, no recursion, no variable-length arrays.</li>
+<li>Static file-scope state; public functions have prototypes; internal
+helpers are <code>static</code>.</li>
+<li>Narrow interfaces; no module reaches into another&#39;s state.</li>
+<li>Explicit casts and saturation at every boundary; no implicit
+narrowing.</li>
+<li><code>const</code> on inputs; pointer and length validation at
+public entry points.</li>
+<li>Comments explain <em>why</em> (timing, safety, trade-off), not
+<em>what</em>.</li>
+<li>Build flags:
+<code>-Wall -Wextra -Werror -Wpedantic -Wshadow -Wstrict-prototypes -Wmissing-prototypes -Wdouble-promotion -Wformat=2 -Wundef -Wcast-qual -Wpointer-arith</code>.</li>
+</ul>
+<h3 id="113-ai-tool-disclosure">11.3 AI-tool disclosure</h3>
+<p>AI assistance was used, as permitted. The layered skeleton, portions
+of the drivers and services, Unity scaffolding, DBC, simulation runner,
+SVG plotter and first drafts of the Markdown were drafted with an AI
+assistant. Every file was compiled under the strict warning set, run
+through the tests and simulator, and reviewed line by line; defects
+found during that review (ISO-TP block boundary, immediate-open on fault
+entry, DTC/ISO-TP test expectations) were fixed in code and tests. No AI
+runs at firmware runtime, and no generated code is linked without
+review. The complete rationale for every non-obvious choice is in the
+alternatives log so each decision can be defended or changed in the
+review.</p>
+<hr />
+<h2 id="12-bonus-b1--soc-estimation">12. Bonus B1 — SOC estimation</h2>
+<h3 id="121-algorithm">12.1 Algorithm</h3>
+<p>Runs every 10 ms:</p>
+<pre class="text"><code>I_corr = I_measured - I_offset
+if I_corr &gt; 0: I_eff = I_corr × η        # η = 0.990, charge only
+else:         I_eff = I_corr
+
+ΔQ_uAh = I_eff × Δt_ms / 3600           # 1 uAh = 3600 mA·ms
+SOC    = clamp(SOC + ΔQ / (C × 1000) × 1000, 0, 1000)   # permille</code></pre>
+<p>Charge is accumulated in micro-amp-hours with a 64-bit remainder so a
+10 ms step does not lose precision through repeated integer division. A
+second remainder keeps the SOC update exact.</p>
+<p><strong>Offset learning:</strong> while <code>|I| &lt; 0.5 A</code>,
+average the current for 30 s and store the average as the offset
+(clamped to ±2 A). This removes a persistent sensor bias at rest.</p>
+<p><strong>OCV correction:</strong> after 1 h at rest
+(<code>|I| &lt; 0.5 A</code>), convert the cell OCV through the supplied
+table (0/10/20/30/50/70/90/95/100 % →
+2800/3200/3250/3280/3300/3320/3340/3380/3450 mV) with linear
+interpolation, and move SOC toward it. The weight is <strong>5
+%</strong> between 3.28 V and 3.34 V (the flat LFP region) and
+<strong>25 %</strong> outside it. The correction is applied once per
+rest period; a 5 ‰ dead band prevents pointless updates.</p>
+<h3 id="122-why-this-design">12.2 Why this design</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Why not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coulomb counting only</td>
+<td>Drifts with offset and efficiency error; no absolute anchor</td>
+</tr>
+<tr>
+<td>OCV only</td>
+<td>Unusable under load; LFP OCV is flat across most of the range</td>
+</tr>
+<tr>
+<td>EKF</td>
+<td>Needs a cell model, tuning, matrix maths and floating point; not
+justified for one pack current sensor</td>
+</tr>
+<tr>
+<td>Coulomb + offset + weighted OCV (chosen)</td>
+<td>Fixed point, bounded, uses the supplied table, and explicitly
+handles the flat region</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Persistence:</strong> SOC is written to NVM every 60 s and on
+parameter changes, not on every sample, to bound flash wear. A power
+loss can lose up to 60 s of drift (≈0.017 % of 100 Ah at 100 A).</p>
+<p><strong>Limitation:</strong> the OCV correction assumes the pack is
+at rest and uses the minimum cell voltage supplied by the application;
+it does not model hysteresis or temperature dependence. Those are
+documented as the next refinements.</p>
+<hr />
+<h2 id="13-bonus-b2--parameter-storage-and-firmware-update">13. Bonus B2
+— parameter storage and firmware update</h2>
+<h3 id="131-parameter-storage-implemented">13.1 Parameter storage
+(implemented)</h3>
+<p>Record layout per slot:</p>
+<pre class="text"><code>offset  size  field
+0       4     magic &#39;BMSN&#39; (0x424D534E)
+4       2     format version (1)
+6       4     sequence number
+10      2     payload length
+12      N     payload (NvmParams_t: bal_start, bal_stop, soc_permille, flags)
+12+N    2     CRC-16 over the header + payload</code></pre>
+<p>Algorithm:</p>
+<ol type="1">
+<li>Load both slots; validate magic, version, length ≤ 64 and CRC.</li>
+<li>Choose the valid slot with the highest sequence.</li>
+<li>If both are invalid/blank, return defaults and report &quot;no valid
+slot&quot;.</li>
+<li>Save: write the <strong>older</strong> slot with
+<code>sequence + 1</code>, then verify by reading back.</li>
+<li>A power loss during a write leaves the other slot valid, so the
+previous parameters are never lost.</li>
+</ol>
+<p>Why A/B and not a single record? A single record is destroyed by a
+power loss mid-write. Why not wear-levelled log? It is the right
+production answer for frequent writes, but two parameters do not justify
+it; the API is compatible with a future log backend. Endurance is 2× the
+slot rating.</p>
+<h3 id="132-firmware-update-design-only-as-permitted">13.2 Firmware
+update (design only, as permitted)</h3>
+<p>Bootloader flow over CAN using UDS:</p>
+<pre class="text"><code>0x10 02   enter programming session
+0x27      security access (seed/key)
+0x34      request download (address, size)
+0x36      transfer data (blocks)
+0x37      request transfer exit
+0x31 01   check integrity (hash/signature)
+0x31 01   activate new image</code></pre>
+<p>A/B image layout:</p>
+<pre class="text"><code>┌──────────────┬──────────────┬──────────────────────┐
+│ Bootloader   │ Image A      │ Image B              │
+│ (immutable)  │ + manifest   │ + manifest           │
+└──────────────┴──────────────┴──────────────────────┘
+manifest: version, length, SHA-256, ECDSA/RSA signature, confirmed flag</code></pre>
+<p>Recovery rules:</p>
+<ul>
+<li>The bootloader always boots the <strong>last confirmed</strong>
+image.</li>
+<li>A new image is confirmed only after the application passes its
+self-test and writes the confirm flag.</li>
+<li>Power loss during download: the old image remains valid.</li>
+<li>Power loss during confirmation: the bootloader falls back to the old
+image.</li>
+<li>Signature failure: the image is never booted; the old image
+stays.</li>
+</ul>
+<p>The application and bootloader share the CAN/ISO-TP/UDS transport,
+not the safety logic. This is a design, not shipped code — the
+assignment marks B2 design-only, and untested boot code would be worse
+than a clear design.</p>
+<hr />
+<h2 id="14-every-alternative-and-why-it-was-not-chosen">14. Every
+alternative, and why it was not chosen</h2>
+<p>This is the table to use when the reviewer asks &quot;why didn&#39;t you
+just…&quot;.</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Options considered</th>
+<th>Chosen</th>
+<th>Why the others were rejected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scheduling</td>
+<td>bare super-loop with delays; event loop with flags; cooperative
+timer table; preemptive RTOS; work in a timer ISR; static time-triggered
+table</td>
+<td><strong>Cooperative timer-driven table: 1 ms quantum, 10 ms fast,
+100 ms main</strong></td>
+<td>Delays and ISR work destroy jitter and WCET evidence; an event loop
+hides priority and deadline proof; an RTOS adds footprint,
+priority-inversion analysis and host-reproducibility loss for five fixed
+jobs; a static schedule table is the same order with more machinery</td>
+</tr>
+<tr>
+<td>AFE acquisition</td>
+<td>blocking wait for conversion; one interrupt per register; one
+state-machine step per tick</td>
+<td><strong>Non-blocking state machine, one SPI transaction per
+tick</strong></td>
+<td>Blocking violates the requirement; per-register interrupts create
+ISR load and shared-state complexity; the state machine has a bounded
+step, a natural retry point and a deadline</td>
+</tr>
+<tr>
+<td>NTC conversion</td>
+<td>Beta equation every sample; Steinhart–Hart; lookup table with
+interpolation</td>
+<td><strong>Lookup table + linear interpolation</strong></td>
+<td><code>log</code>/<code>exp</code> cost float or expensive fixed
+point per channel per cycle; the table is deterministic, FPU-free and
+accurate enough over the automotive range; cost is a small const
+table</td>
+</tr>
+<tr>
+<td>Snapshot consistency</td>
+<td>plain volatile array; mutex; seqlock; double buffer</td>
+<td><strong>Double buffer + short critical-section index
+swap</strong></td>
+<td>A volatile array tears between fields; a mutex can block and needs
+an RTOS; a seqlock is correct but harder to review; double buffering is
+allocation-free and gives one coherent 16-cell set</td>
+</tr>
+<tr>
+<td>Balancing criterion</td>
+<td>voltage-based; SOC-based; OCV-based; capacity-based</td>
+<td><strong>Voltage-based with top-of-charge gate</strong></td>
+<td>Only per-cell voltage is measured; SOC-based needs per-cell
+SOC/capacity that the BOM cannot provide; LFP voltage is a usable proxy
+above 3.4 V</td>
+</tr>
+<tr>
+<td>Starvation prevention</td>
+<td>fixed odd/even; round-robin; random; priority for the cell skipped
+last cycle</td>
+<td><strong>Priority cell within a 20 mV fairness band</strong></td>
+<td>Fixed alternation can starve a non-adjacent cell and ignores
+ranking; random is not deterministic; the priority rule is
+deterministic, bounded and targets the cell that missed out</td>
+</tr>
+<tr>
+<td>Candidate ordering</td>
+<td>bubble/insertion sort; selection sort; <code>qsort</code>; bucket by
+voltage</td>
+<td><strong>Insertion sort, n ≤ 16</strong></td>
+<td>120 comparisons worst case, no allocation, no recursion, stable,
+easy to reason about; <code>qsort</code> adds a function pointer and a
+library dependency for no benefit</td>
+</tr>
+<tr>
+<td>Protection structure</td>
+<td>one <code>if</code> per fault; one function per fault; table-driven
+<code>FaultDef_t</code></td>
+<td><strong>Table + generic debounce/DTC object</strong></td>
+<td>Copying debounce 11 times invites divergence; the table makes
+thresholds/actions/release data and one state machine executes them</td>
+</tr>
+<tr>
+<td>Debounce representation</td>
+<td>timestamp <code>now - start</code>; incrementing counter;
+decrementing counter; accumulated timer</td>
+<td><strong>Accumulated timer with <code>dt_ms</code></strong></td>
+<td>A timestamp is sensitive to wrap and missed calls; the accumulator
+is explicit, works with variable steps and is easy to test</td>
+</tr>
+<tr>
+<td>CCL/DCL derivation</td>
+<td>fixed limits; one temperature curve; piecewise-linear temperature +
+voltage derating</td>
+<td><strong>Piecewise-linear tables + 100 mA/ms ramp</strong></td>
+<td>Fixed limits ignore temperature and voltage; one curve cannot
+represent charge and discharge; tables are reviewable and the ramp
+prevents steps</td>
+</tr>
+<tr>
+<td>CAN packing</td>
+<td>hand-written shifts; macro per signal; table-driven descriptor</td>
+<td><strong>Table-driven descriptor with num/den scaling, offset,
+saturation, Intel packing</strong></td>
+<td>Hand-written shifts duplicate sign/offset/cross-byte logic; macros
+are hard to debug; the table is tested once and reused</td>
+</tr>
+<tr>
+<td>CAN Tx blocking</td>
+<td>wait for mailbox; blocking send; queue with bounded drain</td>
+<td><strong>8-entry queue, ≤4 per poll, drop-newest</strong></td>
+<td>Blocking violates the 100 ms budget; an unbounded queue needs
+allocation; drop-newest plus a counter is deterministic and periodic
+frames recover</td>
+</tr>
+<tr>
+<td>ISO-TP</td>
+<td>full ISO 15765-2; single-frame only; minimal FF/FC/CF</td>
+<td><strong>Minimal multi-frame with FC</strong></td>
+<td>A full stack is unnecessary for two DIDs; single-frame only violates
+the 0x0100 requirement; the minimal stack is auditable and testable; no
+CAN-FD/extended addressing</td>
+</tr>
+<tr>
+<td>UDS scope</td>
+<td>full ISO 14229; required subset with hooks</td>
+<td><strong>Required subset + DID/DTC hooks</strong></td>
+<td>A full server is a large surface with little assessment value; the
+subset covers every requested service and keeps NRCs explicit</td>
+</tr>
+<tr>
+<td>State machine</td>
+<td>free-form <code>if</code> chain; function-pointer table;
+<code>switch</code> + entry helper</td>
+<td><strong><code>switch</code> +
+<code>EnterState()</code></strong></td>
+<td>The graph is small and mostly conditional; a table would need
+parameters/callbacks that obscure precharge timing; the switch is
+readable and directly testable</td>
+</tr>
+<tr>
+<td>HAL binding</td>
+<td>compile-time <code>#ifdef</code>; weak symbols; function-pointer ops
+table</td>
+<td><strong><code>HalOps_t</code> installed at start-up</strong></td>
+<td><code>#ifdef</code> makes dual builds hard; weak symbols are
+toolchain-specific; the ops table gives one explicit injection point and
+NULL-safe wrappers</td>
+</tr>
+<tr>
+<td>SOC</td>
+<td>coulomb only; OCV only; EKF; coulomb + offset + weighted OCV</td>
+<td><strong>Coulomb + offset learning + weighted OCV</strong></td>
+<td>Counting drifts; OCV is unusable under load and flat; an EKF needs a
+model/tuning/floating point; the chosen method meets B1 in fixed point
+and handles the flat region</td>
+</tr>
+<tr>
+<td>NVM</td>
+<td>single record; A/B ping-pong; log-structured wear levelling;
+external EEPROM</td>
+<td><strong>A/B with magic/version/sequence/CRC</strong></td>
+<td>A single record loses the old value on power loss; log-structured is
+the production answer but overkill for two parameters; A/B doubles
+endurance and always leaves one valid record</td>
+</tr>
+<tr>
+<td>Test framework</td>
+<td>Unity; CppUTest; GoogleTest; custom asserts</td>
+<td><strong>Unity (MIT), vendored</strong></td>
+<td>Tiny, C99, allocation-free runner, offline; GoogleTest is C++ and
+heavy; CppUTest adds infrastructure</td>
+</tr>
+<tr>
+<td>Coverage tooling</td>
+<td>gcov+lcov; gcovr; clang source-based</td>
+<td><strong>gcov directly</strong></td>
+<td>lcov/gcovr not installed; <code>gcov -b -c</code> reports the same
+line/branch data and the <code>.gcov</code> files are the evidence</td>
+</tr>
+<tr>
+<td>Plotting</td>
+<td>gnuplot; Python/matplotlib; Excel; custom SVG</td>
+<td><strong><code>tools/plot_svg.c</code></strong></td>
+<td>gnuplot/Python unavailable; a small C tool keeps one compiler, no
+allocation, and produces committable browser-viewable artefacts</td>
+</tr>
+<tr>
+<td>Build system</td>
+<td>Make; CMake; Meson; scripts</td>
+<td><strong>CMake + Ninja + GCC</strong></td>
+<td>Portable across Windows/Linux/macOS, per-target warning flags,
+<code>simulate</code>/<code>check</code>/coverage options without
+shell-specific scripts</td>
+</tr>
+<tr>
+<td>Firmware update</td>
+<td>single-bank bootloader; A/B banks; external flash staging</td>
+<td><strong>Design-only A/B with signature and power-loss
+recovery</strong></td>
+<td>B2 is design-only; implementing a bootloader without a target adds
+untestable code; the design covers signature, confirmation and
+rollback</td>
+</tr>
+<tr>
+<td>Parameter storage</td>
+<td>RAM only; single flash record; A/B with CRC; wear-levelled log</td>
+<td><strong>A/B with magic/version/sequence/CRC</strong></td>
+<td>Meets versioning, CRC, default fallback and power-loss safety; wear
+levelling is the documented production extension</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="15-requirement-traceability">15. Requirement traceability</h2>
+<table>
+<thead>
+<tr>
+<th>Requirement</th>
+<th>Implementation</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Task 1 architecture, scheduling, state machine, data sharing,
+safety</td>
+<td><code>src/app/</code>, <code>src/services/</code>,
+<code>docs/DESIGN.md</code></td>
+<td>design doc, 88 tests, simulation</td>
+</tr>
+<tr>
+<td>Task 2 AFE driver, CRC, retries, plausibility, snapshot</td>
+<td><code>src/drivers/afe.c</code>, <code>src/hal/afe_sim.c</code></td>
+<td><code>test/test_afe.c</code> (9 tests)</td>
+</tr>
+<tr>
+<td>Task 3 balancing, S1–S10, fairness, inhibits, timeout</td>
+<td><code>src/services/balancing.c</code></td>
+<td><code>test/test_balancing.c</code> (17 tests), 96.08 % branches</td>
+</tr>
+<tr>
+<td>Task 4 protection table, debounce, DTCs, CCL/DCL ramp</td>
+<td><code>src/services/protection.c</code></td>
+<td><code>test/test_protection.c</code> (10 tests), 91.38 %
+branches</td>
+</tr>
+<tr>
+<td>Task 5 CAN matrix, signal layer, DBC, UDS, ISO-TP</td>
+<td><code>src/services/can_*.c</code>, <code>uds.c</code>,
+<code>isotp.c</code>, <code>dbc/bms.dbc</code></td>
+<td><code>test/test_can.c</code>, <code>test/test_uds.c</code></td>
+</tr>
+<tr>
+<td>Task 6 unit tests, simulation, static analysis, coverage</td>
+<td><code>test/</code>, <code>sim/</code>, <code>docs/</code></td>
+<td>88 tests, 2 scenarios, 5 SVGs, cppcheck clean</td>
+</tr>
+<tr>
+<td>Task 7 code review</td>
+<td><code>CODE_REVIEW.md</code></td>
+<td>47 findings, corrected code</td>
+</tr>
+<tr>
+<td>Task 8 documentation and quality</td>
+<td>all <code>.md</code>, headers, strict build</td>
+<td>one-command build, zero warnings</td>
+</tr>
+<tr>
+<td>B1 SOC</td>
+<td><code>src/services/soc.c</code></td>
+<td><code>test/test_soc.c</code>, flat/edge weights</td>
+</tr>
+<tr>
+<td>B2 parameter storage</td>
+<td><code>src/services/nvm.c</code></td>
+<td><code>test/test_nvm.c</code>, A/B/CRC/fallback</td>
+</tr>
+<tr>
+<td>B2 firmware update</td>
+<td><code>docs/DESIGN.md</code> §12, this document §13.2</td>
+<td>bootloader design with A/B, signature, recovery</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="16-review-session-speaking-notes">16. Review-session speaking
+notes</h2>
+<h3 id="161-the-two-minute-answer">16.1 The two-minute answer</h3>
+<blockquote>
+<p>&quot;It&#39;s a 16-cell LFP BMS. The firmware uses a 1 ms tick with a 10 ms
+fast task and a 100 ms main task: the AFE state machine and CAN drain
+step at 1 ms, current, over-current and protection at 10 ms, balancing
+and CAN Tx at 100 ms, statistics at 500 ms, and slow frames at 1 s. The
+AFE is a non-blocking state machine that does one SPI transaction per
+tick, so a full 21-channel scan takes about 22 ms without blocking.
+Everything safety-relevant is table-driven: eleven faults with debounce,
+latch, release and DTC status; CAN signals with scale, offset and CRC;
+balancing thresholds and inhibits. The state machine handles precharge,
+drive, charge, fault and sleep, holds contactors for a second before
+opening unless it&#39;s an over-current or hard OV/UV, and treats a lost VCU
+as STANDBY rather than a latched fault. Shared data is double-buffered
+with a short critical section. There are 88 tests, 96 % branch coverage
+on balancing and 91 % on protection, cppcheck is clean, and two
+simulation scenarios with plots show balancing converging and a fault
+tripping, latching, clearing and recovering.&quot;</p>
+</blockquote>
+<p>Then stop. Let them pick a thread.</p>
+<h3 id="162-the-ten-minute-whiteboard-flow">16.2 The ten-minute
+whiteboard flow</h3>
+<ol type="1">
+<li><strong>Draw four layers</strong> (app → services → drivers → HAL)
+and say the dependency rule.</li>
+<li><strong>Draw the scheduler table</strong> (five rows, period, WCET)
+and the 8.5 % total. Mention the overrun policy in one sentence.</li>
+<li><strong>Draw the state machine</strong> and the precharge timeline
+(NEG → 20 ms → PRE → 95 %/2 s → POS → 20 ms → PRE off).</li>
+<li><strong>Draw the fault path</strong>: table → debounce → latch →
+open request → 1 s hold / immediate.</li>
+<li><strong>Draw the AFE state machine</strong> and the double-buffer
+swap.</li>
+<li><strong>Draw the CAN stack</strong>: signals → frame → queue →
+mailbox, plus CRC/alive.</li>
+<li><strong>Draw the UDS path</strong>: tester → ISO-TP SF/FF/FC/CF →
+UDS → DID → response.</li>
+<li><strong>Close with evidence</strong>: 88 tests, coverage, cppcheck,
+two traces.</li>
+</ol>
+<h3 id="163-what-to-emphasise">16.3 What to emphasise</h3>
+<ul>
+<li>Every claim is backed by a file, test or trace.</li>
+<li>The safe state is the default; unsafe action requires a positive
+command.</li>
+<li>The design is deliberately boring: fixed tables, fixed buffers, no
+dynamic behaviour.</li>
+<li>The alternatives were considered, not ignored; §14 has the
+list.</li>
+<li>The limitations are stated before the reviewer finds them.</li>
+</ul>
+<h3 id="164-traps-to-avoid">16.4 Traps to avoid</h3>
+<ul>
+<li>Do not claim ISO 26262 compliance. Claim a safety mindset and name
+what is out of scope.</li>
+<li>Do not claim target timing measurements. Say they are conservative
+estimates and describe the GPIO/WCET measurement you would do next.</li>
+<li>Do not hide the NVM write latency. Name it, quantify it, and give
+the HAL-level fix.</li>
+<li>Do not say &quot;the RTOS would be better&quot;. Say why five fixed jobs do
+not need one, and what would change your mind (blocking drivers, many
+priorities, dynamic workloads).</li>
+<li>Do not defend a bug in the supplied listings. The review is supposed
+to find them.</li>
+</ul>
+<hr />
+<h2 id="17-likely-questions-and-model-answers">17. Likely questions and
+model answers</h2>
+<p><strong>Q1. Why no RTOS?</strong> Five fixed periodic jobs with known
+WCET. A cooperative table gives deterministic order, bounded work per
+tick, an overrun counter and a host build that behaves like the target.
+An RTOS adds RAM/flash, per-task stacks, priority-inversion analysis and
+non-reproducible host timing without adding functionality. I would move
+to an RTOS if a driver needed to block, if there were many asynchronous
+priorities, or if a task had to preempt another.</p>
+<p><strong>Q2. What happens if a task overruns?</strong> It runs once,
+the deadline is re-based to <code>now + period</code>, and the overrun
+counter increments. No catch-up. That bounds the work in the next tick
+and turns a missed deadline into telemetry instead of a latency
+burst.</p>
+<p><strong>Q3. How do you know the 1 ms tick and the 10 ms fast task
+fit?</strong> The 1 ms tick is one bounded SPI step plus CAN drain: a
+3–5 byte transfer at 1 MHz plus driver overhead is 30–50 µs, so 80 µs is
+a conservative bound (8 % if charged to every tick). The AFE is active
+only ~22 ms per 100 ms, so the average is closer to 1–2 %. The 10 ms
+fast task is ~40 µs (0.4 %). On target I would toggle a GPIO at task
+entry/exit and measure with a scope or DWT cycle counter; that is
+explicitly the next step because there is no hardware here.</p>
+<p><strong>Q4. Why one SPI transaction per tick instead of reading all
+cells at once?</strong> A single blocking burst would violate the &quot;do
+not block while waiting for conversion&quot; requirement and make the tick&#39;s
+WCET depend on the AFE. One transaction per tick gives a bounded step, a
+natural retry point, and a 22 ms scan that is still far inside the 100
+ms control cycle.</p>
+<p><strong>Q5. Why double buffering instead of a mutex?</strong> No RTOS
+and no blocking. A mutex would block the producer or consumer and needs
+priority inheritance. Double buffering gives a coherent set with a
+critical section of a few dozen bytes, and no SPI runs inside it.</p>
+<p><strong>Q6. Why not a seqlock?</strong> It is correct, but it needs
+atomic sequence handling and careful retry logic. Double buffering is
+simpler to review and has a fixed, tiny critical section. For 16 cells
+the copy cost is irrelevant.</p>
+<p><strong>Q7. How do you prevent torn 16-bit reads?</strong> I do not
+rely on the width. The whole snapshot is copied under a critical
+section, so the consumer sees one complete conversion. Individual 16-bit
+reads being atomic on Cortex-M is not the argument.</p>
+<p><strong>Q8. Explain balancing in 30 seconds.</strong> Gate on valid
+measurement, no fault, VCU enable, temperature, not discharging. Require
+<code>Vmax ≥ 3.4 V</code>. A cell starts bleeding above 15 mV over the
+minimum and continues until 5 mV. Sort by voltage, cap at 8 cells,
+reject adjacent pairs, and give the first skipped cell priority next
+cycle if it is within 20 mV of the maximum. Stop after 8 h and require a
+charge cycle to clear.</p>
+<p><strong>Q9. Why voltage-based, not SOC-based?</strong> LFP OCV is
+flat from about 30 % to 90 % SOC, so mid-range voltage differences say
+little. At the top of charge the curve steepens and voltage is a usable
+proxy. The BOM has one pack current sensor, not per-cell current, so
+per-cell SOC would be a model guess. Voltage-based top-balancing is the
+standard choice for passive bleed.</p>
+<p><strong>Q10. How do you prevent two adjacent cells from
+bleeding?</strong>
+<code>Adjacent(mask) = (mask &amp; (mask &lt;&lt; 1)) != 0</code>.
+Candidates are added one at a time; a candidate that would create an
+adjacent pair is skipped and becomes the starvation priority.</p>
+<p><strong>Q11. What if nine cells qualify?</strong> The first eight
+non-adjacent cells are selected; the first rejected cell is remembered.
+With 16 cells and no adjacency the maximum is eight, so the limit and
+the adjacency rule agree.</p>
+<p><strong>Q12. How do you prevent starvation?</strong> Remember the
+first cell dropped by the max-cell or adjacency rule. Next cycle, if it
+is within 20 mV of <code>Vmax</code>, sort it first. A much higher cell
+still wins, so fairness never overrides a real divergence.</p>
+<p><strong>Q13. Why 15/5 mV?</strong> Enough hysteresis to stop chatter
+from bleed-current IR drop and measurement noise, small enough to
+converge in a reasonable time. It is calibratable in
+<code>BalConfig_t</code> and validated (5–50 mV start, stop &lt;
+start).</p>
+<p><strong>Q14. Why an 8 h timeout?</strong> Continuous balancing for
+days indicates a cell that will not converge, a measurement offset, or a
+stuck switch. Stopping and warning is safer than continuing. A charge
+cycle is the natural proof that the pack has been cycled and the warning
+can clear.</p>
+<p><strong>Q15. How does the measurement window work?</strong> The
+application forces the mask to zero before starting an AFE conversion
+and applies the new mask only after a valid snapshot is published. That
+removes the bleed current&#39;s IR drop from the measurement. Cost: ≈22 ms
+per 100 ms, so ≈78 % maximum duty.</p>
+<p><strong>Q16. Walk me through the protection debounce.</strong> Each
+fault has a set condition, a release condition, a debounce, a latch flag
+and an action mask. While set, an accumulator grows by <code>dt</code>;
+when it reaches the debounce the fault becomes active and latches if
+configured. A single false sample resets the accumulator. Release is
+evaluated even while active; a latched fault clears only when release is
+true and a clear request arrives.</p>
+<p><strong>Q17. Why table-driven protection?</strong> Eleven copies of
+the same debounce/status logic diverge. The table makes thresholds,
+actions, release conditions and DTCs data; one state machine executes
+them. Adding a fault is a row plus a condition pair, and the status
+logic is tested once.</p>
+<p><strong>Q18. How do you avoid opening contactors under load?</strong>
+Non-urgent faults request an open but the state machine holds for 1 s so
+the VCU can reduce current. Over-current, hard OV (&gt;3750 mV), hard UV
+(≤2300 mV) and precharge failure request an immediate open, independent
+of the debounce. That is the explicit exception in the requirement.</p>
+<p><strong>Q19. Why is VCU timeout not a FAULT?</strong> The assignment
+says &quot;go to STANDBY, open after 1 s&quot;. A lost VCU is a communication
+loss, not a pack hazard. It is still a DTC and still opens the
+contactors after 1 s, but it does not latch the hardware fault state.
+That lets the system recover when the VCU returns.</p>
+<p><strong>Q20. Explain the DTC clear semantics.</strong> A clear
+request alone does nothing if the release condition is false. When
+release is true, the active/latch state clears and the status records
+&quot;test not completed since clear&quot; / &quot;failed since clear&quot; as appropriate.
+The DTC remains visible to 0x19 until it is retested, so the tester can
+see the history rather than the record vanishing.</p>
+<p><strong>Q21. How are CCL and DCL derived?</strong> Take the minimum
+of the temperature derating and the voltage derating, then ramp at 100
+mA/ms. Charge: 0 below 0 °C, 50 A at 5 °C, 100 A to 45 °C, 0 at 55 °C.
+Discharge: 0 below −20 °C, 100 A at 0 °C, 200 A to 45 °C, 0 at 60 °C.
+Voltage tapers: 100→0 A from 3550→3650 mV charge, 0→200 A from 2500→3000
+mV discharge. Both start at 0 at boot.</p>
+<p><strong>Q22. Why CRC-8 SAE J1850 and a 4-bit alive counter?</strong>
+CRC-8 catches bus/EMC corruption on safety-relevant frames; the alive
+counter catches a stuck or replayed transmitter. Four bits fit the byte
+layout and wrap 15→0; the receiver rejects repeats and jumps &gt;2.
+0x352–0x354 are low-rate informative frames and deliberately carry no
+CRC, as specified.</p>
+<p><strong>Q23. How does UDS 0x0100 fit in 8 bytes?</strong> It does
+not, so ISO-TP multi-frame is used: First Frame with the 32-byte length,
+tester Flow Control, then Consecutive Frames. Block size and STmin are
+honoured; a missing FC aborts after the timeout. The BMS is the
+responder; the tester sends the FC.</p>
+<p><strong>Q24. Why does SOC correct slowly in the flat region?</strong>
+Because a few millivolts there correspond to tens of percent SOC. A 25 %
+correction on a 3.30 V reading could jump SOC by 20 points for a tiny
+measurement error. The 5 % weight between 3.28 V and 3.34 V makes the
+correction slow and stable; on the steep edges 25 % is safe because the
+voltage-to-SOC slope is high.</p>
+<p><strong>Q25. How is NVM power-loss safe?</strong> Two slots, each
+with magic, version, sequence, length and CRC-16. Save writes the older
+slot with sequence+1. A power loss mid-write leaves the other slot
+valid. On boot, the newest valid record wins; if both are corrupt,
+defaults are used and reported.</p>
+<p><strong>Q26. What does the bootloader do on a bad signature or a
+power loss?</strong> It never boots an unconfirmed or invalid image. The
+last confirmed image stays valid. A new image is confirmed only after
+the application self-test writes the confirm flag. Power loss during
+download or confirmation leaves the old image bootable.</p>
+<p><strong>Q27. What is the biggest risk in this design?</strong> The
+NVM write latency on target, because it is the one potentially unbounded
+operation inside a periodic task. It is isolated behind the HAL,
+quantified, and has a clear fix (non-blocking page buffer or move to the
+1 s task). The second is the lack of target timing measurements; the 8.5
+% load is an estimate, and the next step is GPIO/WCET measurement.</p>
+<p><strong>Q28. What would you do with another week?</strong> Measure
+WCET on target, make NVM non-blocking, add cell open-wire localisation,
+add a GitHub Actions CI file, run a MISRA check with a deviation list,
+add temperature-dependent OCV/hysteresis to SOC, and implement the
+bootloader if hardware were available.</p>
+<p><strong>Q29. How was AI used, and how do you know the code is
+correct?</strong> It drafted skeleton and implementation material, which
+I reviewed line by line, compiled under <code>-Werror</code>, exercised
+with 88 tests, two simulations and cppcheck. Defects found during that
+review were fixed in code and tests. The design rationale is written
+down so I can defend or change every decision. No AI runs at runtime and
+no generated code is linked unreviewed.</p>
+<p><strong>Q30. If I change the cell count to 12, what breaks?</strong>
+<code>AFE_CELL_COUNT</code>, <code>BAL_CELL_COUNT</code>,
+<code>PROT_CELL_COUNT</code>, the CAN mux count and the DBC need to
+change together; the code is table/count driven, so the algorithms are
+unchanged. The tests use the count constant. I would add a compile-time
+assertion that the three counts agree and that the mux count covers
+<code>ceil(N/3)</code>. That is the honest answer: the design is
+count-driven but the constants are not yet centralised in one
+header.</p>
+<hr />
+<h2 id="18-the-three-day-plan">18. The three-day plan</h2>
+<h3 id="day-1--architecture-and-acquisition">Day 1 — architecture and
+acquisition</h3>
+<ul>
+<li>Decide scheduling, layering, HAL injection, state machine and fault
+policy.</li>
+<li>Implement common (CRC, saturation), HAL simulator, AFE register
+model and driver.</li>
+<li>Bring up the scheduler and the state machine with synthetic
+inputs.</li>
+<li>Write the AFE and HAL tests. First full build with
+<code>-Werror</code>.</li>
+</ul>
+<h3 id="day-2--safety-and-communication">Day 2 — safety and
+communication</h3>
+<ul>
+<li>Balancing: gates, hysteresis, adjacency, max cells, priority,
+timeout, measurement window.</li>
+<li>Protection: <code>FaultDef_t</code>, debounce/DTC object, derating,
+ramp, hard thresholds.</li>
+<li>CAN signal layer, CAN matrix, DBC, VCU monitor, Tx queue.</li>
+<li>ISO-TP and UDS subset; unit tests for every service.</li>
+<li>Start coverage and close the gaps.</li>
+</ul>
+<h3 id="day-3--evidence-and-documentation">Day 3 — evidence and
+documentation</h3>
+<ul>
+<li>Simulation scenarios, trace schema, SVG plotter, run and inspect the
+traces.</li>
+<li>Coverage to target, cppcheck, strict build, stack measurement.</li>
+<li>README, DESIGN, ASSUMPTIONS, CODE_REVIEW, coverage/static-analysis
+reports.</li>
+<li>Final pass: re-read every file, check requirement traceability,
+verify one-command build.</li>
+</ul>
+<p>The plan deliberately front-loads the architecture because a bad
+layering decision on day 3 cannot be fixed in the time left. Bonuses
+were implemented after the mandatory paths were green, not before.</p>
+<hr />
+<h2 id="19-limitations-and-production-roadmap">19. Limitations and
+production roadmap</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Limitation</th>
+<th>Why it exists</th>
+<th>Production fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>No target timing measurements</td>
+<td>No hardware in the environment</td>
+<td>Toggle GPIO at task entry/exit; measure WCET and stack high-water on
+the MCU</td>
+</tr>
+<tr>
+<td>2</td>
+<td>NVM write can block up to tens of ms on target</td>
+<td>PC HAL is a memory copy; target flash timing not measured</td>
+<td>Page-buffered/non-blocking HAL, or defer saves to STANDBY</td>
+</tr>
+<tr>
+<td>3</td>
+<td>No MISRA add-on or clang-tidy</td>
+<td>Not installed</td>
+<td>Run both; produce a deviation list; keep the strict warning set</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Cell open-wire not localised</td>
+<td>AFE reports a single flag</td>
+<td>Read the AFE open-wire diagnostic register and map to a cell</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ISO-TP has no CAN-FD/extended addressing</td>
+<td>7-byte classic CAN is the requirement</td>
+<td>Add CAN-FD and addressing modes if the harness requires them</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Bootloader is design-only</td>
+<td>B2 marks it design-only</td>
+<td>Implement A/B with signature and confirmation on hardware</td>
+</tr>
+<tr>
+<td>7</td>
+<td>No CI file</td>
+<td>No Git/hosted runner in the environment</td>
+<td>GitHub Actions running configure, build, ctest, coverage,
+cppcheck</td>
+</tr>
+<tr>
+<td>8</td>
+<td>SOC has no temperature/hysteresis model</td>
+<td>Scope and one pack current sensor</td>
+<td>Add temperature-dependent OCV and charge/discharge hysteresis</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Parameter storage has no wear levelling</td>
+<td>Two parameters, A/B is sufficient</td>
+<td>Log-structured region with erase counters behind the same API</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Packs count constants are duplicated</td>
+<td>Time; three modules own their counts</td>
+<td>One <code>bms_config.h</code> with compile-time assertions tying
+counts to the DBC</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="20-appendix">20. Appendix</h2>
+<h3 id="201-file-index-what-to-open-first">20.1 File index (what to open
+first)</h3>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How do I build and run it?</td>
+<td><code>README.md</code> §1</td>
+</tr>
+<tr>
+<td>What is the architecture and why?</td>
+<td><code>docs/DESIGN.md</code> §2–§7</td>
+</tr>
+<tr>
+<td>What did you assume?</td>
+<td><code>ASSUMPTIONS.md</code></td>
+</tr>
+<tr>
+<td>How does balancing work?</td>
+<td><code>src/services/balancing.c</code>,
+<code>test/test_balancing.c</code></td>
+</tr>
+<tr>
+<td>How does protection work?</td>
+<td><code>src/services/protection.c</code>,
+<code>test/test_protection.c</code></td>
+</tr>
+<tr>
+<td>How does the state machine work?</td>
+<td><code>src/app/bms_state.c</code>,
+<code>test/test_state.c</code></td>
+</tr>
+<tr>
+<td>How is the AFE non-blocking?</td>
+<td><code>src/drivers/afe.c</code>, <code>test/test_afe.c</code></td>
+</tr>
+<tr>
+<td>How is CAN packed?</td>
+<td><code>src/services/can_signal.c</code>, <code>can_matrix.c</code>,
+<code>dbc/bms.dbc</code></td>
+</tr>
+<tr>
+<td>How does UDS work?</td>
+<td><code>src/services/uds.c</code>, <code>isotp.c</code>,
+<code>test/test_uds.c</code></td>
+</tr>
+<tr>
+<td>What does the review find?</td>
+<td><code>CODE_REVIEW.md</code></td>
+</tr>
+<tr>
+<td>What is the evidence?</td>
+<td><code>docs/coverage.txt</code>,
+<code>docs/static_analysis.txt</code>, <code>sim/out/</code></td>
+</tr>
+<tr>
+<td>What are the alternatives?</td>
+<td>§14 of this document, <code>docs/DESIGN.md</code> §7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="202-dtc-map">20.2 DTC map</h3>
+<table>
+<thead>
+<tr>
+<th>DTC</th>
+<th>Fault</th>
+<th>Primary reaction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x000A01</td>
+<td>Cell over-voltage</td>
+<td>CCL 0; open &gt;3750 mV immediately</td>
+</tr>
+<tr>
+<td>0x000A02</td>
+<td>Cell under-voltage</td>
+<td>DCL 0; open ≤2300 mV immediately</td>
+</tr>
+<tr>
+<td>0x000A03</td>
+<td>Charge over-temperature</td>
+<td>CCL 0</td>
+</tr>
+<tr>
+<td>0x000A04</td>
+<td>Discharge over-temperature</td>
+<td>open</td>
+</tr>
+<tr>
+<td>0x000A05</td>
+<td>Charge under-temperature</td>
+<td>CCL 0</td>
+</tr>
+<tr>
+<td>0x000A06</td>
+<td>Discharge over-current</td>
+<td>open immediately</td>
+</tr>
+<tr>
+<td>0x000A07</td>
+<td>Charge over-current</td>
+<td>open immediately</td>
+</tr>
+<tr>
+<td>0x000A08</td>
+<td>AFE communication</td>
+<td>open, latched</td>
+</tr>
+<tr>
+<td>0x000A09</td>
+<td>VCU timeout</td>
+<td>STANDBY, open after 1 s</td>
+</tr>
+<tr>
+<td>0x000A0A</td>
+<td>Cell-sum mismatch</td>
+<td>CCL/DCL 0</td>
+</tr>
+<tr>
+<td>0x000A0B</td>
+<td>Precharge failure</td>
+<td>open immediately, latched</td>
+</tr>
+</tbody>
+</table>
+<h3 id="203-can-map">20.3 CAN map</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Direction</th>
+<th>Period</th>
+<th>Safety content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x350</td>
+<td>Pack status</td>
+<td>BMS → VCU</td>
+<td>100 ms</td>
+<td>V, I, SOC, state; CRC + alive</td>
+</tr>
+<tr>
+<td>0x351</td>
+<td>Limits</td>
+<td>BMS → VCU</td>
+<td>100 ms</td>
+<td>CCL, DCL, Vreq, enable; CRC + alive</td>
+</tr>
+<tr>
+<td>0x352</td>
+<td>Cell statistics</td>
+<td>BMS → VCU</td>
+<td>500 ms</td>
+<td>Vmax/Vmin/indices, Tmax/Tmin</td>
+</tr>
+<tr>
+<td>0x353</td>
+<td>Cell voltages</td>
+<td>BMS → VCU</td>
+<td>1000 ms</td>
+<td>6 mux frames, 3 cells each, balance bits</td>
+</tr>
+<tr>
+<td>0x354</td>
+<td>Faults</td>
+<td>BMS → VCU</td>
+<td>1000 ms + change</td>
+<td>fault/warning bits, DTC count</td>
+</tr>
+<tr>
+<td>0x200</td>
+<td>VCU command</td>
+<td>VCU → BMS</td>
+<td>100 ms</td>
+<td>contactor, balance, sleep, clear; CRC + alive</td>
+</tr>
+</tbody>
+</table>
+<h3 id="204-glossary">20.4 Glossary</h3>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AFE</td>
+<td>Analog front end — the cell-voltage / temperature measurement
+IC</td>
+</tr>
+<tr>
+<td>CCL / DCL</td>
+<td>Charge / discharge current limit</td>
+</tr>
+<tr>
+<td>DTC</td>
+<td>Diagnostic trouble code (ISO 14229)</td>
+</tr>
+<tr>
+<td>FC / CF / FF / SF</td>
+<td>ISO-TP flow control / consecutive frame / first frame / single
+frame</td>
+</tr>
+<tr>
+<td>LFP</td>
+<td>Lithium iron phosphate</td>
+</tr>
+<tr>
+<td>NRC</td>
+<td>Negative response code (UDS)</td>
+</tr>
+<tr>
+<td>OCV</td>
+<td>Open-circuit voltage</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>UDS session timeout (5 s here)</td>
+</tr>
+<tr>
+<td>SOC</td>
+<td>State of charge</td>
+</tr>
+<tr>
+<td>WCET</td>
+<td>Worst-case execution time</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>End of document.</strong> The code is the authority; this
+document is the map. If a detail here ever disagrees with
+<code>src/</code>, the code and its tests win, and the document should
+be corrected.</p>
+</body>
+</html>

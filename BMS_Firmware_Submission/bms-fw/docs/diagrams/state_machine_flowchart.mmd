@@ -1,0 +1,64 @@
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"13px","primaryColor":"#e0ecff","primaryBorderColor":"#1e40af","primaryTextColor":"#0f172a","lineColor":"#475569"},"flowchart":{"curve":"linear","nodeSpacing":30,"rankSpacing":32}}}%%
+flowchart TD
+    START(["BmsState_Update()<br/>every 10 ms"])
+
+    GF{"global fault?<br/>not in FAULT / INIT"}
+    START --> GF
+
+    INIT["INIT<br/>all contactors open"]
+    STANDBY["STANDBY<br/>all contactors open"]
+    PRECHARGE["PRECHARGE<br/>NEG, then NEG + PRE"]
+    DRIVE["DRIVE<br/>NEG + POS on"]
+    CHARGE["CHARGE<br/>NEG + POS on"]
+    FAULT["FAULT<br/>NEG/POS held, PRE open"]
+    SLEEP["SLEEP<br/>all contactors open"]
+
+    EXIT_SB1(["to STANDBY"])
+    EXIT_SB2(["to STANDBY"])
+    EXIT_SB3(["to STANDBY"])
+    EXIT_SB4(["to STANDBY"])
+    EXIT_SB5(["to STANDBY"])
+
+    GF -- "yes" --> FAULT
+    GF -- "no" --> INIT
+
+    INIT -- "afe_fault" --> FAULT
+    INIT --> I2{"ready?<br/>afe_ok && meas_valid<br/>&& 200 ms"}
+    I2 -- "no" --> INIT
+    I2 -- "yes" --> STANDBY
+
+    STANDBY --> S1{"sleep_request?"}
+    S1 -- "yes" --> SLEEP
+    S1 -- "no" --> S2{"close request valid?<br/>vcu_valid && close_req<br/>&& meas_valid"}
+    S2 -- "no" --> STANDBY
+    S2 -- "yes" --> PRECHARGE
+
+    PRECHARGE --> P1{"abort?<br/>!vcu_valid || !close_req"}
+    P1 -- "yes" --> EXIT_SB1
+    P1 -- "no" --> P2{"phase 3 done?"}
+    P2 -- "no" --> P3{"2 s timeout?"}
+    P3 -- "yes" --> FAULT
+    P3 -- "no" --> PRECHARGE
+    P2 -- "yes" --> P4{"charger present?"}
+    P4 -- "yes" --> CHARGE
+    P4 -- "no" --> DRIVE
+
+    DRIVE -- "no close_req<br/>or VCU lost 1 s" --> EXIT_SB2
+    CHARGE -- "no close_req<br/>or VCU lost 1 s" --> EXIT_SB3
+    CHARGE -- "charger removed" --> DRIVE
+
+    FAULT --> F1{"release?<br/>1 s && no fault"}
+    F1 -- "no" --> FAULT
+    F1 -- "yes" --> EXIT_SB4
+
+    SLEEP -- "!sleep_request<br/>&& vcu_valid" --> EXIT_SB5
+
+    classDef st fill:#e0ecff,stroke:#1e40af,stroke-width:2px,color:#0f172a;
+    classDef flt fill:#fee2e2,stroke:#b91c1c,stroke-width:2px,color:#7f1d1d;
+    classDef dec fill:#fef3c7,stroke:#b45309,stroke-width:1.5px,color:#78350f;
+    classDef term fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#0f172a;
+
+    class INIT,STANDBY,PRECHARGE,DRIVE,CHARGE,SLEEP st;
+    class FAULT flt;
+    class GF,I2,S1,S2,P1,P2,P3,P4,F1 dec;
+    class START,EXIT_SB1,EXIT_SB2,EXIT_SB3,EXIT_SB4,EXIT_SB5 term;

@@ -1,0 +1,29 @@
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Segoe UI, Arial, sans-serif","fontSize":"14px","primaryColor":"#e0ecff","primaryBorderColor":"#1e40af","primaryTextColor":"#0f172a","lineColor":"#475569"},"flowchart":{"curve":"linear","nodeSpacing":40,"rankSpacing":55}}}%%
+flowchart TD
+    ENTRY(["enter PRECHARGE"])
+    ABORT{"!vcu_valid or !close_req?"}
+    ENTRY --> ABORT
+    ABORT -- "yes" --> STANDBY["STANDBY<br/>all open"]
+
+    P0["phase 0<br/>NEG on, PRE and POS off"]
+    ABORT -- "no" --> P0
+    P0 -- "20 ms settle" --> P1["phase 1<br/>start 2 s timer<br/>NEG + PRE"]
+    P1 -- "next 10 ms update" --> P2["phase 2<br/>NEG + PRE<br/>wait for bus rise"]
+
+    P2 -- "bus &ge; 95% of pack<br/>(pack &gt; 0)" --> P3["phase 3<br/>NEG + PRE + POS<br/>20 ms overlap"]
+    P2 -- "elapsed &gt; 2 s" --> PF["precharge_failed pulse<br/>FAULT, open immediately"]
+
+    P3 -- "20 ms done,<br/>no charger" --> DRIVE["DRIVE<br/>NEG + POS"]
+    P3 -- "20 ms done,<br/>charger present" --> CHARGE["CHARGE<br/>NEG + POS"]
+
+    classDef st fill:#e0ecff,stroke:#1e40af,stroke-width:2px,color:#0f172a;
+    classDef flt fill:#fee2e2,stroke:#b91c1c,stroke-width:2px,color:#7f1d1d;
+    classDef dec fill:#fef3c7,stroke:#b45309,stroke-width:1.5px,color:#78350f;
+    classDef act fill:#dcfce7,stroke:#15803d,stroke-width:1.5px,color:#14532d;
+    classDef term fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#0f172a;
+
+    class STANDBY,DRIVE,CHARGE st;
+    class PF flt;
+    class ABORT dec;
+    class P0,P1,P2,P3 act;
+    class ENTRY term;

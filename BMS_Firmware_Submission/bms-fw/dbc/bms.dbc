@@ -1,0 +1,140 @@
+VERSION "BMS-FW-ASG-01 1.0"
+
+NS_ :
+    NS_DESC_
+    CM_
+    BA_DEF_
+    BA_
+    VAL_
+    CAT_DEF_
+    CAT_
+    FILTER
+    BA_DEF_DEF_
+    EV_DATA_
+    ENVVAR_DATA_
+    SGTYPE_
+    SGTYPE_VAL_
+    BA_DEF_SGTYPE_
+    BA_SGTYPE_
+    SIG_TYPE_REF_
+    VAL_TABLE_
+    SIG_GROUP_
+    SIG_VALTYPE_
+    SIGTYPE_VALTYPE_
+    BO_TX_BU_
+    BA_DEF_REL_
+    BA_REL_
+    BA_DEF_DEF_REL_
+    BU_SG_REL_
+    BU_EV_REL_
+    BU_BO_REL_
+    SG_MUL_VAL_
+
+BS_:
+
+BU_: BMS VCU
+
+
+BO_ 848 BMS_PackStatus: 8 BMS
+ SG_ PackVoltage : 0|16@1+ (0.01,0) [0|655.35] "V" VCU
+ SG_ PackCurrent : 16|16@1- (0.1,0) [-3276.8|3276.7] "A" VCU
+ SG_ SOC : 32|8@1+ (0.5,0) [0|100] "%" VCU
+ SG_ BMS_State : 40|4@1+ (1,0) [0|15] "" VCU
+ SG_ AliveCounter : 44|4@1+ (1,0) [0|15] "" VCU
+ SG_ CRC : 56|8@1+ (1,0) [0|255] "" VCU
+
+BO_ 849 BMS_Limits: 8 BMS
+ SG_ CCL : 0|16@1+ (0.1,0) [0|300] "A" VCU
+ SG_ DCL : 16|16@1+ (0.1,0) [0|300] "A" VCU
+ SG_ ChargeVoltageReq : 32|16@1+ (0.01,0) [0|60] "V" VCU
+ SG_ ChargeEnable : 48|1@1+ (1,0) [0|1] "" VCU
+ SG_ AliveCounter : 52|4@1+ (1,0) [0|15] "" VCU
+ SG_ CRC : 56|8@1+ (1,0) [0|255] "" VCU
+
+BO_ 850 BMS_CellStats: 8 BMS
+ SG_ Vmax : 0|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ Vmin : 16|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ VmaxIdx : 32|8@1+ (1,0) [0|15] "" VCU
+ SG_ VminIdx : 40|8@1+ (1,0) [0|15] "" VCU
+ SG_ Tmax : 48|8@1+ (1,-40) [-40|125] "degC" VCU
+ SG_ Tmin : 56|8@1+ (1,-40) [-40|125] "degC" VCU
+
+BO_ 851 BMS_CellVoltages: 8 BMS
+ SG_ MuxIdx M : 0|8@1+ (1,0) [0|5] "" VCU
+ SG_ CellA_0 m0 : 8|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellB_0 m0 : 24|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellC_0 m0 : 40|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellA_1 m1 : 8|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellB_1 m1 : 24|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellC_1 m1 : 40|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellA_2 m2 : 8|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellB_2 m2 : 24|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellC_2 m2 : 40|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellA_3 m3 : 8|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellB_3 m3 : 24|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellC_3 m3 : 40|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellA_4 m4 : 8|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellB_4 m4 : 24|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellC_4 m4 : 40|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellA_5 m5 : 8|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellB_5 m5 : 24|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ CellC_5 m5 : 40|16@1+ (1,0) [0|5000] "mV" VCU
+ SG_ BalBits : 56|8@1+ (1,0) [0|255] "" VCU
+
+BO_ 852 BMS_Faults: 8 BMS
+ SG_ FaultBits : 0|32@1+ (1,0) [0|4294967295] "" VCU
+ SG_ WarningBits : 32|16@1+ (1,0) [0|65535] "" VCU
+ SG_ NumActiveDTC : 48|8@1+ (1,0) [0|255] "" VCU
+
+BO_ 512 VCU_Command: 8 VCU
+ SG_ ContactorReq : 0|2@1+ (1,0) [0|3] "" BMS
+ SG_ BalancingEnable : 2|1@1+ (1,0) [0|1] "" BMS
+ SG_ SleepReq : 3|1@1+ (1,0) [0|1] "" BMS
+ SG_ FaultClearReq : 4|1@1+ (1,0) [0|1] "" BMS
+ SG_ AliveCounter : 52|4@1+ (1,0) [0|15] "" BMS
+ SG_ CRC : 56|8@1+ (1,0) [0|255] "" BMS
+
+
+BA_DEF_ BO_ "GenMsgCycleTime" INT 0 65535;
+BA_DEF_DEF_ "GenMsgCycleTime" 0;
+
+BA_ "GenMsgCycleTime" BO_ 848 100;
+BA_ "GenMsgCycleTime" BO_ 849 100;
+BA_ "GenMsgCycleTime" BO_ 850 500;
+BA_ "GenMsgCycleTime" BO_ 851 1000;
+BA_ "GenMsgCycleTime" BO_ 852 1000;
+BA_ "GenMsgCycleTime" BO_ 512 100;
+
+
+VAL_ 848 BMS_State 0 "INIT" 1 "STANDBY" 2 "PRECHARGE" 3 "DRIVE" 4 "CHARGE" 5 "FAULT" 6 "SLEEP" ;
+VAL_ 512 ContactorReq 0 "OPEN" 1 "CLOSE" 2 "INVALID" 3 "INVALID" ;
+
+VAL_ 512 BalancingEnable 0 "DISABLED" 1 "ENABLED" ;
+VAL_ 512 SleepReq 0 "NO_REQUEST" 1 "SLEEP" ;
+VAL_ 512 FaultClearReq 0 "NO_REQUEST" 1 "CLEAR" ;
+VAL_ 849 ChargeEnable 0 "DISABLED" 1 "ENABLED" ;
+
+
+CM_ "BMS-FW-ASG-01 CAN database. All signals are Intel (little-endian) byte order. Messages with a CRC use CRC-8 SAE J1850 (poly 0x1D, init 0xFF, xorout 0xFF) over bytes 0-6; the alive counter is 4 bits and wraps 15->0.";
+CM_ BU_ BMS "16S1P LFP battery management system, 48 V, 100 Ah.";
+CM_ BU_ VCU "Vehicle control unit / charger gateway.";
+CM_ BO_ 848 "Pack voltage, current, SOC, BMS state and alive counter. Cycle 100 ms. CRC over bytes 0-6.";
+CM_ BO_ 849 "Charge/discharge current limits, charge voltage request and charge enable. Cycle 100 ms. CRC over bytes 0-6.";
+CM_ BO_ 850 "Cell min/max statistics and temperatures. Cycle 500 ms. No CRC.";
+CM_ BO_ 851 "Multiplexed cell voltages: MuxIdx 0-5, three cells per frame (cells MuxIdx*3+1..+3). Byte 7 carries the balancing bits of those three cells. Cycle 1000 ms. No CRC. The per-mux signal copies (CellA_0..CellC_5) let generic DBC tools decode every mux value; all muxes share the same byte layout.";
+CM_ BO_ 852 "Fault and warning bitmaps plus the number of active DTCs. Cycle 1000 ms and on change. No CRC.";
+CM_ BO_ 512 "VCU command. Cycle 100 ms, timeout 300 ms. CRC over bytes 0-6.";
+CM_ SG_ 848 PackVoltage "Pack voltage, 0.01 V per bit.";
+CM_ SG_ 848 PackCurrent "Pack current, 0.1 A per bit, positive = charge.";
+CM_ SG_ 848 SOC "State of charge, 0.5 % per bit (0-1000 permille internally).";
+CM_ SG_ 848 BMS_State "BMS operating state.";
+CM_ SG_ 849 CCL "Charge current limit, 0.1 A per bit.";
+CM_ SG_ 849 DCL "Discharge current limit, 0.1 A per bit.";
+CM_ SG_ 849 ChargeVoltageReq "Charge voltage request, 0.01 V per bit.";
+CM_ SG_ 850 VmaxIdx "Zero-based index of the maximum cell (0 = cell 1).";
+CM_ SG_ 850 VminIdx "Zero-based index of the minimum cell (0 = cell 1).";
+CM_ SG_ 851 BalBits "Balancing mask bits for the three cells in this frame.";
+CM_ SG_ 852 FaultBits "Bit n corresponds to FaultId n in services/protection.h.";
+CM_ SG_ 852 WarningBits "Warning bitmap (currently the warning-class DTCs).";
+CM_ SG_ 512 ContactorReq "0 = open, 1 = close, 2/3 = invalid.";
+CM_ SG_ 512 FaultClearReq "Rising edge clears latched DTCs whose release condition is met.";

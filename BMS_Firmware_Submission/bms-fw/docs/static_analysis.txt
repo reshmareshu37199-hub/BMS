@@ -1,0 +1,49 @@
+Static analysis report — BMS-FW-ASG-01 (Task 6)
+===============================================
+
+Date    : 2026-11-16
+Tool    : Cppcheck 2.22.0
+Scope   : all 18 C files under bms-fw/src (HAL, drivers, services, application)
+Standard: C11
+Command :
+    cppcheck --enable=warning,style,performance,portability --std=c11 \
+             --suppress=missingIncludeSystem --suppress=unusedFunction \
+             -I bms-fw/src bms-fw/src
+
+Result
+------
+No findings.
+
+All 18 translation units were checked. No warning, style, performance or
+portability issue was reported.
+
+Suppressions and justification
+------------------------------
+* missingIncludeSystem
+  The scan does not ship the target SDK/system headers. Suppressing only the
+  "missing system include" class avoids false positives; all project headers
+  are present and were parsed.
+* unusedFunction
+  The public API of the service/driver modules is consumed by the unit tests
+  and the simulator, not by a single translation unit. Without this suppression
+  cppcheck would report every public function that is not called from within
+  the same file.
+
+Manual review notes
+-------------------
+* No dynamic allocation, no recursion, no variable-length arrays.
+* All loops have a compile-time or input-bounded upper limit.
+* Fixed-width integer types are used throughout; all narrowing conversions are
+  explicit.
+* Buffer accesses are bounds-checked at the public API boundary (CAN DLC,
+  ISO-TP length, UDS length, NVM length, HAL slot index).
+* `volatile` is used only for the AFE active-buffer index.
+* The only compiler-specific behaviour relied on is two's-complement signed
+  representation, which is guaranteed by the C11 target and by the fixed-width
+  types used in the code.
+
+Not run
+-------
+* MISRA C:2012 add-on (not installed in the environment) and clang-tidy (not
+  installed). The source follows MISRA-friendly rules, but no formal deviation
+  list is claimed. See docs/DESIGN.md §13.

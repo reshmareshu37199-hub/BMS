@@ -1,0 +1,17 @@
+# Over-voltage fault, protection trip, recovery and DTC clear scenario.
+#
+# Columns:
+#   t_ms,current_ma,cell_min_mv,cell_max_mv,cell_max_idx,temp_dc,bus_mv,charger,clear
+#
+# Phase 1 (0-30 s)    : 60 A discharge, healthy pack, contactors closed
+# Phase 2 (30-50 s)   : cell 3 (index 2) jumps to 3700 mV
+#                       -> OV debounce 1 s -> FAULT, contactors open
+# Phase 3 (50-70 s)   : cell 3 recovers to 3300 mV, fault stays latched
+# Phase 4 (70-72 s)   : VCU requests a DTC clear (rising edge)
+# Phase 5 (72-100 s)  : BMS returns to STANDBY, DC link falls to 0 V
+0,-60000,3300,3300,-1,250,0,0,0
+30000,-60000,3300,3700,2,250,0,0,0
+50000,-60000,3300,3300,-1,250,0,0,0
+70000,-60000,3300,3300,-1,250,0,0,1
+72000,0,3300,3300,-1,250,0,0,0
+100000,0,3300,3300,-1,250,0,0,0

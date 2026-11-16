@@ -1,0 +1,63 @@
+Coverage report — BMS-FW-ASG-01 (Task 6)
+=========================================
+
+Date        : 2026-11-16
+Compiler    : GCC 16.2.0 (MinGW-w64)
+Coverage    : gcov 16.2.0 (shipped with GCC)
+Build type  : Debug, -DBMS_COVERAGE=ON (adds --coverage -O0)
+Test binary : bms_tests.exe (Unity, 88 tests, 0 failures)
+
+Requirement
+-----------
+"Report line and branch coverage for the balancing and protection modules.
+ Target at least 85 % branch coverage for these modules."
+
+The reported branch metric is gcov's "Taken at least once", i.e. the fraction of
+branch outcomes that were executed at least once. "Branches executed" is also
+listed for completeness; it counts branches reached, not outcomes taken, and is
+therefore the weaker metric.
+
+Procedure
+---------
+    cmake -S bms-fw -B bms-fw/build-cov -G Ninja -DBMS_COVERAGE=ON
+    cmake --build bms-fw/build-cov
+    cd bms-fw/build-cov
+    ./bms_tests.exe
+    cd coverage
+    gcov -b -c ../CMakeFiles/bms_core.dir/src/services/balancing.c.gcno
+    gcov -b -c ../CMakeFiles/bms_core.dir/src/services/protection.c.gcno
+
+Results
+-------
+File              Lines executed     Branches executed     Taken at least once
+----------------  -----------------  ---------------------  -------------------
+balancing.c       100.00 % (168)     100.00 % (102)         96.08 % (102)
+protection.c       97.30 % (259)     100.00 % (174)         91.38 % (174)
+
+Requirement (branch taken >= 85 %):
+    balancing.c   PASS  (96.08 %)
+    protection.c  PASS  (91.38 %)
+
+Notes
+-----
+* balancing.c reached 100 % line coverage after adding tests for:
+  - Bal_Init() validation of max_cells > 16 and timeout_ms == 0
+  - Bal_SetMeasurementWindow() / BAL_INHIBIT_MEAS_PAUSE
+  - VCU balancing disable
+  - the timeout inhibit that persists until the next charge cycle
+  - Bal_Run(NULL)
+  - max-cell exhaustion and the adjacency skip that sets the priority cell
+  - priority-cell selection within the fairness band
+  - insertion-sort voltage comparison and the fairness-band comparison
+* protection.c line coverage is 97.30 %. The remaining unexecuted lines are
+  defensive branches that require a corrupted internal state (for example a
+  NULL release-function path) and are not reachable through the public API.
+  All 174 branch outcomes were reached; 91.38 % were taken at least once.
+* Raw gcov reports are generated as balancing.c.gcov and protection.c.gcov in
+  bms-fw/build-cov/coverage/. They are build artifacts and are not committed.
+
+Conclusion
+----------
+Both required modules exceed the 85 % branch-coverage target. The coverage is
+produced by the same test suite that is used for the normal build (81 original
+plus 7 additional balancing cases = 88 tests).

@@ -1,0 +1,175 @@
+/* Print/HTML style for the BMS-FW-ASG-01 master document.
+ * Used by the optional `docs/COMPLETE_SOLUTION.html` build; not part of the firmware. */
+@page {
+    size: A4;
+    margin: 18mm 16mm 20mm 16mm;
+}
+
+html {
+    font-size: 10.5pt;
+}
+
+body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: #1b1f24;
+    line-height: 1.5;
+    max-width: 190mm;
+    margin: 0 auto;
+    padding: 0;
+    background: #ffffff;
+}
+
+h1, h2, h3, h4 {
+    font-family: "Segoe UI Semibold", "Segoe UI", Arial, sans-serif;
+    color: #0b3d62;
+    line-height: 1.25;
+    margin-top: 1.4em;
+    margin-bottom: 0.45em;
+    page-break-after: avoid;
+}
+
+h1 {
+    font-size: 2.0em;
+    border-bottom: 3px solid #0b3d62;
+    padding-bottom: 0.25em;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 1.45em;
+    border-bottom: 1px solid #c9d6e2;
+    padding-bottom: 0.18em;
+    margin-top: 1.6em;
+}
+
+h3 { font-size: 1.18em; }
+h4 { font-size: 1.02em; }
+
+p, li {
+    orphans: 3;
+    widows: 3;
+}
+
+a {
+    color: #0b5cad;
+    text-decoration: none;
+}
+
+code {
+    font-family: "Cascadia Mono", Consolas, "Courier New", monospace;
+    font-size: 0.88em;
+    background: #f2f5f8;
+    border: 1px solid #e1e8ef;
+    border-radius: 3px;
+    padding: 0.05em 0.28em;
+}
+
+pre {
+    background: #f6f8fa;
+    border: 1px solid #d7e0e8;
+    border-left: 4px solid #0b5cad;
+    border-radius: 4px;
+    padding: 0.7em 0.9em;
+    overflow-x: auto;
+    line-height: 1.38;
+    page-break-inside: avoid;
+}
+
+pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.82em;
+}
+
+blockquote {
+    margin: 1em 0;
+    padding: 0.55em 1em;
+    background: #eef5fb;
+    border-left: 4px solid #0b5cad;
+    color: #24313d;
+}
+
+blockquote p { margin: 0.2em 0; }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0.9em 0 1.15em 0;
+    font-size: 0.88em;
+    page-break-inside: auto;
+}
+
+thead {
+    display: table-header-group;
+}
+
+tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+}
+
+th, td {
+    border: 1px solid #c9d6e2;
+    padding: 0.32em 0.45em;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: #e4eef7;
+    color: #0b3d62;
+    font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+ul, ol {
+    margin-top: 0.4em;
+    margin-bottom: 0.8em;
+    padding-left: 1.6em;
+}
+
+li { margin: 0.18em 0; }
+
+hr {
+    border: none;
+    border-top: 1px solid #c9d6e2;
+    margin: 1.6em 0;
+}
+
+#TOC {
+    background: #f6f8fa;
+    border: 1px solid #d7e0e8;
+    border-radius: 4px;
+    padding: 0.7em 1.1em;
+    margin: 1.2em 0 1.8em 0;
+    font-size: 0.92em;
+    page-break-after: always;
+}
+
+#TOC ul {
+    list-style: none;
+    padding-left: 1.1em;
+    margin: 0.15em 0;
+}
+
+#TOC > ul { padding-left: 0; }
+
+#TOC a { color: #1b1f24; }
+
+.title {
+    font-size: 1.05em;
+    color: #5a6b7b;
+    margin-bottom: 0.4em;
+}
+
+.date, .author { color: #5a6b7b; }
+
+/* Keep table rows and code from splitting awkwardly in the PDF. */
+h2 + table, h3 + table { page-break-before: avoid; }
+
+/* Start the table of contents on a fresh page so the cover stays clean. */
+#contents { page-break-before: always; page-break-after: always; }

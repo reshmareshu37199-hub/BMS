@@ -1,0 +1,20 @@
+# Charge + passive balancing scenario.
+#
+# Columns:
+#   t_ms,current_ma,cell_min_mv,cell_max_mv,cell_max_idx,temp_dc,bus_mv,charger,clear
+#
+# The VCU close request is injected automatically by the simulator.  The bus
+# starts tied to the pack (bus_mv = 0) so the precharge completes quickly and
+# the state machine settles in CHARGE.
+#
+# Phase 1 (0-20 s)    : 20 A charge, all cells 3300 mV, delta 0  -> no balance
+# Phase 2 (20-80 s)   : cell 5 (index 4) rises to 3480 mV        -> balance
+# Phase 3 (80-140 s)  : cell 5 relaxes to 3460 mV                -> balance
+# Phase 4 (140-200 s) : cell 5 falls to 3452 mV (delta 2 mV)     -> stop
+# Phase 5 (200-260 s) : charger removed, 30 A discharge          -> inhibit
+0,20000,3300,3300,-1,250,0,1,0
+20000,20000,3450,3480,4,250,0,1,0
+80000,20000,3450,3460,4,255,0,1,0
+140000,20000,3450,3452,4,255,0,1,0
+200000,-30000,3440,3448,4,260,0,0,0
+260000,0,3440,3440,-1,255,0,0,0
